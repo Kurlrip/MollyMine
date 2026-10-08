@@ -1,0 +1,45 @@
+MOLLY — SOUS LA SURFACE
+Pack complet • version 12 • 7 octobre 2026
+
+LANCER SUR ORDINATEUR
+1. Extraire le ZIP dans un dossier.
+2. Ouvrir molly_mine.html dans un navigateur web (double-clic sur le fichier).
+3. Cliquer sur « Commencer l’aventure » ou « Reprendre ma partie ».
+Aucun serveur, compte, framework, installation de dépendances ou connexion Internet n’est nécessaire au jeu.
+
+SUR MOBILE
+Extraire le ZIP puis ouvrir molly_mine.html avec un navigateur acceptant les fichiers HTML locaux. Utiliser les flèches tactiles en bas, en mode portrait. Selon le téléphone et son gestionnaire de fichiers, l’ouverture peut se faire dans un simple aperçu qui n’exécute pas le jeu : choisir un navigateur capable d’exécuter JavaScript. Ce pack est un jeu web, pas un APK ou une application iOS installable.
+
+COMMANDES
+Flèches, ZQSD ou WASD : se déplacer et creuser.
+Maintenir une direction : enchaîner les coups.
+G : gratter une carte à la surface.
+I : sac. B : boutique. M : marché.
+R : utiliser une corde. E : bouteille de secours.
+P / Échap : pause ; Échap ferme également le sac ou le comptoir.
+Entrée : révélation accessible au clavier pendant le grattage.
+Souris ou doigt : gratter une carte ; tapoter une géode.
+
+CE QUE CONTIENT CETTE VERSION
+- Molly illustrée, animée pour marcher et creuser, vers la gauche et la droite.
+- Cinq zones, pioches et durabilité, oxygène, rochers et dangers.
+- Terre : 1 à 3 coups selon la profondeur.
+- Trouvailles : 3 coups ; une pierre générique apparaît progressivement puis disparaît avec « +1 carte ».
+- Les cartes s’accumulent en bas sans interrompre la descente. Leur contenu reste caché ; elles se grattent uniquement à la surface.
+- Sac de 5 kg pour les pierres révélées, pochette séparée pour les cartes.
+- Boutique, marché variable, coffre, commandes de Rose et filons cachés.
+- À la mort, perte de 50 % des trouvailles transportées (pierres du sac et cartes), arrondie au supérieur. Le coffre reste protégé.
+
+FICHIERS
+molly_mine.html : jeu complet ET code source HTML/CSS/JavaScript. Les images nécessaires sont intégrées directement au fichier. Ce fichier seul suffit pour jouer.
+assets/molly_repos.png : copie de l’illustration de repos actuellement intégrée.
+assets/molly_animations.png : copie de la planche de marche et de creusement actuellement intégrée.
+LISEZ_MOI.txt : ce guide.
+version.json : version et empreinte du fichier de jeu.
+
+MODIFIER LE JEU
+Ouvrir molly_mine.html dans un éditeur de texte. Les décors, minerais, effets et interface sont dessinés en Canvas ou construits en HTML/CSS. Les deux images de Molly sont incluses en base64 dans mollyPortrait.src et mollyAtlas.src. Les rectangles de découpe et les points d’appui se trouvent dans MOLLY_RECTS.
+Les PNG du dossier assets sont fournis pour les retouches : les modifier seuls ne met pas automatiquement à jour les images intégrées au HTML. Une nouvelle planche nécessite aussi d’adapter les rectangles si ses dimensions ou poses changent.
+
+SAUVEGARDE
+La progression est enregistrée dans le stockage local du navigateur quand celui-ci l’autorise. Ce ZIP contient le jeu, pas la sauvegarde personnelle de ta session de navigateur. Garder le même navigateur et le même emplacement de fichier aide à retrouver une partie ; l’accès au stockage des fichiers locaux dépend du navigateur. Effacer les données du navigateur ou utiliser une session privée peut supprimer ou empêcher la sauvegarde.
