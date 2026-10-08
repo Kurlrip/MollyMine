@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.1.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.2.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -62,12 +62,17 @@ une validation Android/iOS. Un raccourci d’accueil ne garantit pas le jeu hors
 
 ## État des fonctionnalités
 
-La V12.1.0 conserve le gameplay V12 : cinq zones, cartes en pochette, grattage
-à la surface, extraction en trois coups, sac 5 kg, coffre, marché variable,
-commandes de Rose, filons, pioches, dangers et sauvegarde.
+La V12.2.0 ajoute des salles irrégulières reliées par des tunnels. Chaque frontière
+entre zones forme une couche de roche sombre incassable qui traverse toute la carte.
+Une seule ouverture, large de 2 à 6 cases et placée différemment pour chaque mine,
+permet d’atteindre la zone suivante. Les bords latéraux restent fermés.
 
-Les cavernes irrégulières avec une seule ouverture dans une frontière incassable
-entre zones ont été demandées, mais **ne sont pas implémentées** dans la V12.
-La branche `codex/caves-zone-passages` pointait encore sur le même jeu lors de
-l’audit. Ce changement de génération doit faire l’objet d’une évolution dédiée,
-avec prise en compte des mines déjà sauvegardées.
+La géométrie dépend uniquement de la graine de la concession : elle ne change pas
+selon l’ordre d’exploration, les tirages de butin ou un rechargement. Les tunnels
+principaux sont générés sans rocher, gaz ni monstre afin que le passage reste
+praticable au départ. Les dangers peuvent toujours apparaître dans les salles.
+
+Les sauvegardes V12/V12.1 restent compatibles et conservent leur ancien terrain.
+L’accueil leur propose explicitement une nouvelle concession à cavernes ; cette
+opération garde les cartes, le sac, le coffre, les pièces et les équipements. Le
+bouton « Nouvelle concession » de la boutique crée également le nouveau terrain.
