@@ -1,0 +1,89 @@
+name: Publier MollyMine
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'molly_mine.html'
+      - 'version.json'
+      - 'assets/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Verifier et preparer le jeu
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Verifier la syntaxe JavaScript
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          const html = fs.readFileSync('molly_mine.html', 'utf8');
+          if (!/<html\b/i.test(html) || !/<\/html>/i.test(html)) {
+            throw new Error('Le fichier du jeu est incomplet.');
+          }
+          const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)];
+          let checked = 0;
+          for (const [index, match] of scripts.entries()) {
+            if (/\bsrc\s*=/i.test(match[1])) continue;
+            const type = match[1].match(/\btype\s*=\s*["']([^"']+)["']/i)?.[1];
+            if (type && !['text/javascript', 'application/javascript'].includes(type)) {
+              if (type === 'module') throw new Error('Adapter la verification pour les scripts modules.');
+              continue;
+            }
+            new vm.Script(match[2], { filename: 'molly_mine-script-' + index + '.js' });
+            checked++;
+          }
+          if (!checked) throw new Error('Aucun script de jeu detecte.');
+          JSON.parse(fs.readFileSync('version.json', 'utf8'));
+          console.log(checked + ' script(s) verifie(s).');
+          NODE
+
+      - name: Preparer les fichiers publics
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp molly_mine.html _site/index.html
+          cp molly_mine.html version.json _site/
+          cp -R assets _site/assets
+          touch _site/.nojekyll
+
+      - name: Envoyer le site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    name: Publier sur GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Verifier la configuration Pages
+        uses: actions/configure-pages@v5
+
+      - name: Publier
+        id: deployment
+        uses: actions/deploy-pages@v4
