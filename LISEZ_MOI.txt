@@ -1,5 +1,5 @@
 MOLLY — SOUS LA SURFACE
-Pack complet • version 12 • 7 octobre 2026
+Jeu complet • version 12.1.0 • 8 octobre 2026
 
 LANCER SUR ORDINATEUR
 1. Extraire le ZIP dans un dossier.
@@ -43,3 +43,6 @@ Les PNG du dossier assets sont fournis pour les retouches : les modifier seuls n
 
 SAUVEGARDE
 La progression est enregistrée dans le stockage local du navigateur quand celui-ci l’autorise. Ce ZIP contient le jeu, pas la sauvegarde personnelle de ta session de navigateur. Garder le même navigateur et le même emplacement de fichier aide à retrouver une partie ; l’accès au stockage des fichiers locaux dépend du navigateur. Effacer les données du navigateur ou utiliser une session privée peut supprimer ou empêcher la sauvegarde.
+
+VERSION ET PUBLICATION
+L’accueil du site publié affiche v12.1.0 et le commit Git. Le fichier source local indique « source locale ». Pour construire un fichier autonome avec le commit exact, exécuter node scripts/build.mjs puis ouvrir _site/index.html. Chaque push sur main déclenche la publication GitHub Pages. Voir README.md pour la vérification.
