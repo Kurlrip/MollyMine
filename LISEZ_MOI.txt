@@ -1,5 +1,5 @@
 MOLLY — SOUS LA SURFACE
-Jeu complet • version 12.2.0 • 8 octobre 2026
+Jeu complet • version 12.3.0 • 9 octobre 2026
 
 LANCER SUR ORDINATEUR
 1. Extraire le ZIP dans un dossier.
@@ -24,6 +24,7 @@ CE QUE CONTIENT CETTE VERSION
 - Molly illustrée, animée pour marcher et creuser, vers la gauche et la droite.
 - Cavernes irrégulières reliées par des tunnels.
 - Une frontière incassable entre chaque zone, avec une seule ouverture de 2 à 6 cases.
+- Packs d’assets PNG remplaçables avec fallback automatique sur les dessins actuels.
 - Cinq zones, pioches et durabilité, oxygène, rochers et dangers.
 - Terre : 1 à 3 coups selon la profondeur.
 - Trouvailles : 3 coups ; une pierre générique apparaît progressivement puis disparaît avec « +1 carte ».
@@ -33,15 +34,16 @@ CE QUE CONTIENT CETTE VERSION
 - À la mort, perte de 50 % des trouvailles transportées (pierres du sac et cartes), arrondie au supérieur. Le coffre reste protégé.
 
 FICHIERS
-molly_mine.html : jeu complet ET code source HTML/CSS/JavaScript. Les images nécessaires sont intégrées directement au fichier. Ce fichier seul suffit pour jouer.
-assets/molly_repos.png : copie de l’illustration de repos actuellement intégrée.
-assets/molly_animations.png : copie de la planche de marche et de creusement actuellement intégrée.
+molly_mine.html : jeu complet ET code source HTML/CSS/JavaScript. La source conserve les images de secours intégrées et peut fonctionner seule.
+assets/active-pack.json : sélection du pack d’assets utilisé sur le site.
+assets/packs/ : manifestes, documentation et futurs packs d’assets.
+assets/molly_repos.png : illustration de repos du pack Molly Classic.
+assets/molly_animations.png : planche de marche et de creusement du pack Molly Classic.
 LISEZ_MOI.txt : ce guide.
 version.json : version et empreinte du fichier de jeu.
 
 MODIFIER LE JEU
-Ouvrir molly_mine.html dans un éditeur de texte. Les décors, minerais, effets et interface sont dessinés en Canvas ou construits en HTML/CSS. Les deux images de Molly sont incluses en base64 dans mollyPortrait.src et mollyAtlas.src. Les rectangles de découpe et les points d’appui se trouvent dans MOLLY_RECTS.
-Les PNG du dossier assets sont fournis pour les retouches : les modifier seuls ne met pas automatiquement à jour les images intégrées au HTML. Une nouvelle planche nécessite aussi d’adapter les rectangles si ses dimensions ou poses changent.
+Pour remplacer les visuels, créer un pack sous assets/packs puis suivre assets/packs/README.md. Les assets absents conservent le rendu actuel. Exécuter node scripts/validate-asset-pack.mjs avant le build. Les deux images de secours de Molly restent incluses dans la source locale ; le build publié utilise les PNG externes pour réduire la taille de la page.
 
 SAUVEGARDE
 La progression est enregistrée dans le stockage local du navigateur quand celui-ci l’autorise. Ce ZIP contient le jeu, pas la sauvegarde personnelle de ta session de navigateur. Garder le même navigateur et le même emplacement de fichier aide à retrouver une partie ; l’accès au stockage des fichiers locaux dépend du navigateur. Effacer les données du navigateur ou utiliser une session privée peut supprimer ou empêcher la sauvegarde.
@@ -50,4 +52,4 @@ SAUVEGARDES DES ANCIENNES VERSIONS
 Une ancienne concession reste jouable avec son terrain existant. L’accueil propose d’ouvrir une nouvelle mine à cavernes en conservant les cartes, le sac, le coffre, les pièces et les équipements. Cette action remplace seulement le terrain et les tunnels de la concession.
 
 VERSION ET PUBLICATION
-L’accueil du site publié affiche v12.2.0 et le commit Git. Le fichier source local indique « source locale ». Pour construire un fichier autonome avec le commit exact, exécuter node scripts/build.mjs puis ouvrir _site/index.html. Chaque push sur main déclenche la publication GitHub Pages. Voir README.md pour la vérification.
+L’accueil du site publié affiche v12.3.0, le commit Git et le nom du pack chargé. Le fichier source local indique « source locale ». Pour préparer le site, exécuter node scripts/build.mjs puis ouvrir _site/index.html avec un serveur HTTP local. Chaque push sur main déclenche la publication GitHub Pages. Voir README.md pour la vérification.

@@ -4,16 +4,26 @@ import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import vm from 'node:vm';
+import { validateAssetPack } from './asset-pack.mjs';
 
 export function build(root = process.cwd(), output = resolve(root, '_site')) {
   const source = readFileSync(resolve(root, 'molly_mine.html'), 'utf8');
   const version = JSON.parse(readFileSync(resolve(root, 'version.json'), 'utf8'));
+  const assetPack = validateAssetPack(root);
   if (!/^\d+\.\d+\.\d+$/.test(version.version)) throw new Error('Version semantique invalide.');
   const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   if (process.env.GITHUB_SHA && process.env.GITHUB_SHA !== commit) throw new Error('Le checkout ne correspond pas au commit du workflow.');
   const marker = /<script id="buildInfo" type="application\/json">[^<]*<\/script>/g;
   if ([...source.matchAll(marker)].length !== 1) throw new Error('Metadonnees de version absentes ou dupliquees.');
-  const html = source.replace(marker, `<script id="buildInfo" type="application/json">${JSON.stringify({ version: version.version, commit })}</script>`);
+  let html = source.replace(marker, `<script id="buildInfo" type="application/json">${JSON.stringify({ version: version.version, commit })}</script>`);
+  const publishedImages = [
+    [/mollyPortrait\.src='data:image\/png;base64,[^']+';/g, "mollyPortrait.src='assets/molly_repos.png';"],
+    [/mollyAtlas\.src='data:image\/png;base64,[^']+';/g, "mollyAtlas.src='assets/molly_animations.png';"],
+  ];
+  for (const [pattern, replacement] of publishedImages) {
+    if ([...html.matchAll(pattern)].length !== 1) throw new Error(`Image intégrée absente ou dupliquée : ${pattern}.`);
+    html = html.replace(pattern, replacement);
+  }
   let checked = 0;
   for (const [index, match] of [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)].entries()) {
     if (/\bsrc\s*=/i.test(match[1])) throw new Error('Le jeu doit rester autonome.');
@@ -24,7 +34,7 @@ export function build(root = process.cwd(), output = resolve(root, '_site')) {
     checked++;
   }
   if (!checked || !/<\/html>\s*$/i.test(html)) throw new Error('Jeu incomplet.');
-  const metadata = { ...version, commit, sha256: createHash('sha256').update(html).digest('hex') };
+  const metadata = { ...version, commit, assetPack: { id: assetPack.manifest.id, version: assetPack.manifest.version }, sha256: createHash('sha256').update(html).digest('hex') };
   mkdirSync(output, { recursive: true });
   for (const filename of ['index.html', 'molly_mine.html']) writeFileSync(resolve(output, filename), html);
   writeFileSync(resolve(output, 'version.json'), JSON.stringify(metadata, null, 2) + '\n');

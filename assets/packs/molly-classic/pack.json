@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-classic",
+  "name": "Molly Classic",
+  "version": "1.0.0",
+  "license": {
+    "name": "Illustrations originales MollyMine",
+    "source": "Projet MollyMine",
+    "commercialUse": true
+  },
+  "sprites": {
+    "molly.idle": {
+      "src": "../../molly_repos.png",
+      "frame": [260, 30, 970, 1090]
+    },
+    "molly.atlas": {
+      "src": "../../molly_animations.png",
+      "frames": [
+        [43, 10, 394, 433, 224, 439],
+        [476, 10, 384, 431, 657, 437],
+        [904, 11, 394, 435, 1084, 442],
+        [1353, 10, 394, 432, 1537, 438],
+        [21, 454, 368, 403, 226, 853],
+        [463, 439, 360, 421, 679, 856],
+        [905, 461, 454, 395, 1083, 852],
+        [1405, 452, 350, 425, 1550, 853]
+      ]
+    }
+  }
+}

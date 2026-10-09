@@ -1,16 +1,16 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.2.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.3.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
 ## Jouer et modifier
 
-`molly_mine.html` contient le jeu complet, ses styles et les images intégrées.
+`molly_mine.html` contient le jeu complet, ses styles et les images de secours intégrées.
 Il peut toujours être ouvert directement, sans serveur ni dépendance. L’accueil
 indique alors « source locale ». Les commandes et règles sont dans `LISEZ_MOI.txt`.
-Les PNG dans `assets/` sont les originaux ; les modifier seuls ne remplace pas les
-images intégrées au HTML.
+Sur le site et dans `_site`, le pack actif peut remplacer progressivement les
+dessins intégrés sans modifier les règles du jeu.
 
 ## Construire et vérifier
 
@@ -22,11 +22,14 @@ node scripts/build.mjs
 ```
 
 Le build écrit `_site/index.html`, `_site/molly_mine.html`, `version.json`, les
-assets et `.nojekyll`. Les deux HTML sont identiques et restent autonomes.
+assets et `.nojekyll`. Les deux HTML sont identiques. Les grandes images intégrées
+sont remplacées par leurs fichiers dans `assets/` pour alléger fortement la page
+publiée ; le fichier source reste jouable seul et le rendu procédural reste le
+dernier fallback si un asset publié manque.
 L’accueil affiche la version et les sept premiers caractères du commit ; son
 infobulle contient le SHA complet. Le manifeste publié contient aussi le commit
 complet et l’empreinte SHA-256 du HTML réellement servi. Le build ne modifie ni
-les règles du jeu ni les sauvegardes.
+les règles du jeu ni les sauvegardes. Il refuse aussi un pack actif invalide.
 
 `version.json` dans le dépôt décrit le fichier source. Pour une nouvelle version,
 mettre à jour son numéro et le numéro local dans le bloc `buildInfo` du HTML,
@@ -76,3 +79,26 @@ Les sauvegardes V12/V12.1 restent compatibles et conservent leur ancien terrain.
 L’accueil leur propose explicitement une nouvelle concession à cavernes ; cette
 opération garde les cartes, le sac, le coffre, les pièces et les équipements. Le
 bouton « Nouvelle concession » de la boutique crée également le nouveau terrain.
+
+## Packs d’assets
+
+La V12.3.0 charge `assets/active-pack.json`, puis le manifeste sélectionné. Un pack
+peut être partiel : chaque slot absent ou impossible à charger conserve le dessin
+actuel. Les slots couvrent Molly, les terrains des cinq zones, la roche incassable,
+les rochers, la pierre cachée, le gaz, les monstres, l’alerte d’éboulement et les
+deux stands de surface.
+
+Les PNG peuvent provenir de ComfyUI, Gemini ou d’un pack acheté. Le manifeste doit
+indiquer la source et confirmer l’autorisation commerciale. Les chemins absolus,
+les sorties hors de `assets/`, les cadres hors image et les slots inconnus sont
+refusés par le build.
+
+```powershell
+node scripts/validate-asset-pack.mjs
+node --test
+node scripts/build.mjs
+```
+
+Le format complet, les slots et les tailles conseillées sont documentés dans
+`assets/packs/README.md`. Le pack actif `molly-classic` utilise les deux PNG déjà
+présents et prouve le circuit complet sans changer la direction artistique.
