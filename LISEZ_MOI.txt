@@ -1,5 +1,5 @@
 MOLLY — SOUS LA SURFACE
-Jeu complet • version 12.3.0 • 9 octobre 2026
+Jeu complet • version 12.4.0 • 9 octobre 2026
 
 LANCER SUR ORDINATEUR
 1. Extraire le ZIP dans un dossier.
@@ -52,4 +52,6 @@ SAUVEGARDES DES ANCIENNES VERSIONS
 Une ancienne concession reste jouable avec son terrain existant. L’accueil propose d’ouvrir une nouvelle mine à cavernes en conservant les cartes, le sac, le coffre, les pièces et les équipements. Cette action remplace seulement le terrain et les tunnels de la concession.
 
 VERSION ET PUBLICATION
-L’accueil du site publié affiche v12.3.0, le commit Git et le nom du pack chargé. Le fichier source local indique « source locale ». Pour préparer le site, exécuter node scripts/build.mjs puis ouvrir _site/index.html avec un serveur HTTP local. Chaque push sur main déclenche la publication GitHub Pages. Voir README.md pour la vérification.
+L’accueil du site publié affiche v12.4.0, le commit Git et le nom du pack chargé. Le fichier source local indique « source locale ». Pour préparer le site, exécuter node scripts/build.mjs puis ouvrir _site/index.html avec un serveur HTTP local. Chaque push sur main déclenche la publication GitHub Pages. Voir README.md pour la vérification.
+
+Le pack actif Molly Default ajoute 12 visuels générés dans deux atlas PNG. Pour les refaire avec ComfyUI ou Gemini, copier les prompts de assets/packs/molly-default/prompts.json et suivre le README de ce dossier. Molly garde ses animations actuelles.

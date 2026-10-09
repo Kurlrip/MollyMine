@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.3.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.4.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -100,5 +100,8 @@ node scripts/build.mjs
 ```
 
 Le format complet, les slots et les tailles conseillées sont documentés dans
-`assets/packs/README.md`. Le pack actif `molly-classic` utilise les deux PNG déjà
-présents et prouve le circuit complet sans changer la direction artistique.
+`assets/packs/README.md`. La V12.4.0 active `molly-default` : deux atlas générés
+pour les cinq terrains, les cinq rochers, la roche incassable et la pierre cachée.
+Molly conserve son portrait et ses animations. Les prompts exacts et le guide de
+régénération sont dans `assets/packs/molly-default/`. Le pack `molly-classic`
+reste disponible pour revenir aux visuels précédents.

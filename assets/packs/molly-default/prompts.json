@@ -1,0 +1,19 @@
+{
+  "generator": "Codex built-in image_gen",
+  "generatedAt": "2026-10-09",
+  "layout": {
+    "columns": 3,
+    "rows": 2,
+    "requestedWidth": 1536,
+    "requestedHeight": 1024
+  },
+  "terrain": {
+    "filename": "terrain-atlas.png",
+    "transparentBackground": false,
+    "prompt": "Create a production-ready 2D terrain texture atlas PNG for MollyMine, a cozy cartoon underground mining game. EXACT layout: landscape image 1536x1024, a strict 3 column x 2 row grid of six 512x512 square cells, zero gutters, zero margins. Each cell is a full opaque seamless square texture filling its entire cell edge to edge, flat front-facing cross-section, no perspective, no tile bevel borders. Row-major cell order: (1) warm ochre brown compact earth with restrained large soil cracks, palette #b47642 #cf9455 #845335; (2) mossy dark green earth, palette #396c53 #518563 #294d42; (3) deep slate blue compact earth, palette #435576 #5a6f91 #303c58; (4) muted purple crystal-zone soil WITHOUT exposed gems or crystals, palette #684c86 #9065a1 #493360; (5) rusty red magma-zone earth WITHOUT visible lava pools, palette #91493f #b66349 #663031; (6) indestructible dark blue charcoal bedrock with broad sturdy interlocking stone forms, palette #1b303b #38505b. Style: polished hand-painted casual mobile game, broad simple shapes, softly shaded flat textures, readable when each cell shrinks to 64x64, consistent top-left light, muted details and few cracks. Texture patterns must remain neutral to avoid revealing hidden loot. No characters, no fossils, no minerals, no gems, no gold, no glowing collectibles, no icons, no shadows outside textures, no text, no numbers, no labels, no watermark. Output exactly this usable atlas, not a presentation board."
+  },
+  "rocks": {
+    "filename": "rock-atlas.png",
+    "transparentBackground": true
+  }
+}

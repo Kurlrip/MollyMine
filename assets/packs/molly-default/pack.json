@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-default",
+  "name": "Molly Default",
+  "version": "1.0.0",
+  "license": {
+    "name": "Illustrations originales générées pour MollyMine",
+    "source": "Codex image_gen, 2026-10-09 ; prompts.json ; Molly : illustrations originales existantes",
+    "commercialUse": true
+  },
+  "sprites": {
+    "molly.idle": {
+      "src": "../../molly_repos.png",
+      "frame": [
+        260,
+        30,
+        970,
+        1090
+      ]
+    },
+    "molly.atlas": {
+      "src": "../../molly_animations.png",
+      "frames": [
+        [
+          43,
+          10,
+          394,
+          433,
+          224,
+          439
+        ],
+        [
+          476,
+          10,
+          384,
+          431,
+          657,
+          437
+        ],
+        [
+          904,
+          11,
+          394,
+          435,
+          1084,
+          442
+        ],
+        [
+          1353,
+          10,
+          394,
+          432,
+          1537,
+          438
+        ],
+        [
+          21,
+          454,
+          368,
+          403,
+          226,
+          853
+        ],
+        [
+          463,
+          439,
+          360,
+          421,
+          679,
+          856
+        ],
+        [
+          905,
+          461,
+          454,
+          395,
+          1083,
+          852
+        ],
+        [
+          1405,
+          452,
+          350,
+          425,
+          1550,
+          853
+        ]
+      ]
+    },
+    "terrain.0": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        0,
+        0,
+        512,
+        512
+      ]
+    },
+    "rock.0": {
+      "src": "rock-atlas.png",
+      "frame": [
+        0,
+        0,
+        512,
+        512
+      ]
+    },
+    "terrain.1": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        512,
+        0,
+        512,
+        512
+      ]
+    },
+    "rock.1": {
+      "src": "rock-atlas.png",
+      "frame": [
+        512,
+        0,
+        512,
+        512
+      ]
+    },
+    "terrain.2": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        1024,
+        0,
+        512,
+        512
+      ]
+    },
+    "rock.2": {
+      "src": "rock-atlas.png",
+      "frame": [
+        1024,
+        0,
+        512,
+        512
+      ]
+    },
+    "terrain.3": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        0,
+        512,
+        512,
+        512
+      ]
+    },
+    "rock.3": {
+      "src": "rock-atlas.png",
+      "frame": [
+        0,
+        512,
+        512,
+        512
+      ]
+    },
+    "terrain.4": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        512,
+        512,
+        512,
+        512
+      ]
+    },
+    "rock.4": {
+      "src": "rock-atlas.png",
+      "frame": [
+        512,
+        512,
+        512,
+        512
+      ]
+    },
+    "bedrock": {
+      "src": "terrain-atlas.png",
+      "frame": [
+        1024,
+        512,
+        512,
+        512
+      ]
+    },
+    "find.stone": {
+      "src": "rock-atlas.png",
+      "frame": [
+        1024,
+        512,
+        512,
+        512
+      ]
+    }
+  }
+}
