@@ -4,7 +4,36 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import vm from 'node:vm';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { validateAssetPack } from '../scripts/asset-pack.mjs';
+import { ASSET_SLOTS, validateAssetPack } from '../scripts/asset-pack.mjs';
+
+test('les variantes graphiques utilisent leur slot puis le terrain commun si une image manque', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = html.match(/^function drawPackedTile[^\n]+/m)[0];
+  const available = new Set(['terrain.0.1', 'terrain.0']), calls = [];
+  const context = vm.createContext({ drawPackedSprite: slot => { calls.push(slot); return available.has(slot); } });
+  vm.runInContext(code, context);
+  assert.equal(vm.runInContext("drawPackedTile('terrain.0',null,0,0,64,64,1)", context), true);
+  assert.deepEqual(calls.splice(0), ['terrain.0.1']);
+  assert.equal(vm.runInContext("drawPackedTile('terrain.0',null,0,0,64,64,2)", context), true);
+  assert.deepEqual(calls.splice(0), ['terrain.0.2', 'terrain.0']);
+  available.clear();
+  assert.equal(vm.runInContext("drawPackedTile('terrain.0',null,0,0,64,64,2)", context), false);
+  for (let z = 0; z < 5; z++) {
+    for (let v = 0; v < 3; v++) assert.ok(ASSET_SLOTS.has(`terrain.${z}.${v}`));
+    for (let v = 0; v < 2; v++) assert.ok(ASSET_SLOTS.has(`tunnel.${z}.${v}`));
+  }
+});
+
+test('la répartition des variantes est stable et ne consomme pas le RNG de gameplay', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = ['caveNoise', 'visualVariant'].map(name => html.match(new RegExp(`^function ${name}[^\\n]+`, 'm'))[0]).join('\n');
+  const context = vm.createContext({ worldSeed: 123, seed: 987 });
+  vm.runInContext(code, context);
+  const first = vm.runInContext('Array.from({length:12},(_,y)=>visualVariant(8,y,3))', context);
+  assert.equal(new Set(first).size, 3, 'Les variantes ne doivent pas former une colonne uniforme.');
+  assert.deepEqual(first, vm.runInContext('Array.from({length:12},(_,y)=>visualVariant(8,y,3))', context));
+  assert.equal(context.seed, 987);
+});
 
 test('au chargement, un fichier absent et un crop invalide ne désactivent pas les slots valides', async () => {
   const manifest = {

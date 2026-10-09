@@ -4,6 +4,9 @@ import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 export const ASSET_SLOTS = new Set([
   'molly.idle', 'molly.atlas',
   ...Array.from({ length: 5 }, (_, i) => `terrain.${i}`),
+  ...Array.from({ length: 5 }, (_, i) => Array.from({ length: 3 }, (_, v) => `terrain.${i}.${v}`)).flat(),
+  ...Array.from({ length: 5 }, (_, i) => `tunnel.${i}`),
+  ...Array.from({ length: 5 }, (_, i) => Array.from({ length: 2 }, (_, v) => `tunnel.${i}.${v}`)).flat(),
   'bedrock',
   ...Array.from({ length: 5 }, (_, i) => `rock.${i}`),
   'find.stone', 'gas', 'monster', 'warning', 'stall.shop', 'stall.market',

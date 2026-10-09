@@ -51,6 +51,10 @@ une image indisponible laisse les autres slots du pack utilisables.
 
 - `molly.idle`, `molly.atlas`
 - `terrain.0` à `terrain.4`
+- `terrain.<zone>.<variante>` : trois variantes (0, 1, 2) par zone ;
+  si une variante manque, le jeu utilise `terrain.<zone>`, puis son dessin intégré.
+- `tunnel.0` à `tunnel.4` : fond des cases vides ;
+  `tunnel.<zone>.<variante>` accepte deux variantes (0 et 1) avec le même secours.
 - `bedrock`
 - `rock.0` à `rock.4`
 - `find.stone`

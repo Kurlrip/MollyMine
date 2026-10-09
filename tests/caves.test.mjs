@@ -10,7 +10,7 @@ const source = [
   html.match(/^const TILE_SIZE=.*$/m)[0], html.match(/^const EMPTY=.*$/m)[0],
   html.match(/const ZONES=\[[\s\S]*?\n\];/)[0],
   ...['key', 'depthAt', 'zoneAt', 'rand', 'generateLegacy', 'setCell'].map(line),
-  html.split('// CAVE_GENERATOR_BEGIN')[1].split('// CAVE_WORLD_END')[0].replace(/^.*\n/, ''),
+  html.split('// CAVE_GENERATOR_BEGIN')[1].split('// CAVE_WORLD_END')[0].replace(/^[^\r\n]*\r?\n/, ''),
 ].join('\n');
 function world(seed = 1, generation = 2) {
   const context = vm.createContext({});
