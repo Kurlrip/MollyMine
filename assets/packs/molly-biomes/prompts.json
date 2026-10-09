@@ -1,0 +1,46 @@
+{
+  "generator": "Codex built-in image_gen",
+  "date": "2026-10-09",
+  "textures": [
+    {
+      "zone": 1,
+      "name": "Mine Mousseuse",
+      "filename": "moss-tiles.png",
+      "reference": "../molly-surface/surface-tiles-v2.png",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept. Edit target: the supplied MollyMine validated surface texture atlas. Produce its Mine Mousseuse biome variant. Preserve the EXACT 1536x1024 image, strict 3 columns x 2 rows of 512x512 opaque square cells, zero gutters or outer margins. Preserve the top row's THREE DIFFERENT simple broad soil shapes and pebble arrangements, but recolor ALL three to the SAME consistent #396c53 #518563 #294d42 palette and the SAME average brightness. They must not form light/dark stripes when tiled together. Biome character: matte moss-green compact soil, restrained moss-tinted surfaces, no leaves or plants sticking out. Bottom left and bottom right: preserve two different subtle excavated-tunnel shapes, recolor to VERY DARK muted #193c35, low contrast and no obstacles. Bottom middle: keep the existing blue-charcoal indestructible bedrock cell UNCHANGED. Preserve the approved soft hand-painted cartoon style, broad quiet forms and tiny number of details. Front-facing orthographic texture, usable at 64x64 pixels. Keep matching tile edge colors so random variants feel continuous. Do not add details or new objects. No borders or tile frame, no bevel rim, no text or labels, no typography, no watermark, no characters, no treasure, no gold, no fossils, no minerals, no gems. Output a usable texture atlas, not a presentation sheet."
+    },
+    {
+      "zone": 2,
+      "name": "Caverne Profonde",
+      "filename": "deep-tiles.png",
+      "reference": "../molly-surface/surface-tiles-v2.png",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept. Edit target: the supplied MollyMine validated surface texture atlas. Produce its Caverne Profonde biome variant. Preserve the EXACT 1536x1024 image, strict 3 columns x 2 rows of 512x512 opaque square cells, zero gutters or outer margins. Preserve the top row's THREE DIFFERENT simple broad soil shapes and pebble arrangements, but recolor ALL three to the SAME consistent #435576 #5a6f91 #303c58 palette and the SAME average brightness. They must not form light/dark stripes when tiled together. Biome character: muted deep slate-blue compact soil, smooth heavy earthen forms, no ice and no water. Bottom left and bottom right: preserve two different subtle excavated-tunnel shapes, recolor to VERY DARK muted #1e293f, low contrast and no obstacles. Bottom middle: keep the existing blue-charcoal indestructible bedrock cell UNCHANGED. Preserve the approved soft hand-painted cartoon style, broad quiet forms and tiny number of details. Front-facing orthographic texture, usable at 64x64 pixels. Keep matching tile edge colors so random variants feel continuous. Do not add details or new objects. No borders or tile frame, no bevel rim, no text or labels, no typography, no watermark, no characters, no treasure, no gold, no fossils, no minerals, no gems. Output a usable texture atlas, not a presentation sheet."
+    },
+    {
+      "zone": 3,
+      "name": "Faille Cristalline",
+      "filename": "violet-tiles.png",
+      "reference": "../molly-surface/surface-tiles-v2.png",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept. Edit target: the supplied MollyMine validated surface texture atlas. Produce its Faille Cristalline biome variant. Preserve the EXACT 1536x1024 image, strict 3 columns x 2 rows of 512x512 opaque square cells, zero gutters or outer margins. Preserve the top row's THREE DIFFERENT simple broad soil shapes and pebble arrangements, but recolor ALL three to the SAME consistent #684c86 #9065a1 #493360 palette and the SAME average brightness. They must not form light/dark stripes when tiled together. Biome character: muted lavender-purple compact soil, absolutely NO visible crystals, gemstones, sparkles or exposed loot. Bottom left and bottom right: preserve two different subtle excavated-tunnel shapes, recolor to VERY DARK muted #2d2343, low contrast and no obstacles. Bottom middle: keep the existing blue-charcoal indestructible bedrock cell UNCHANGED. Preserve the approved soft hand-painted cartoon style, broad quiet forms and tiny number of details. Front-facing orthographic texture, usable at 64x64 pixels. Keep matching tile edge colors so random variants feel continuous. Do not add details or new objects. No borders or tile frame, no bevel rim, no text or labels, no typography, no watermark, no characters, no treasure, no gold, no fossils, no minerals, no gems. Output a usable texture atlas, not a presentation sheet."
+    },
+    {
+      "zone": 4,
+      "name": "Cœur Magmatique",
+      "filename": "magma-tiles.png",
+      "reference": "../molly-surface/surface-tiles-v2.png",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept. Edit target: the supplied MollyMine validated surface texture atlas. Produce its Cœur Magmatique biome variant. Preserve the EXACT 1536x1024 image, strict 3 columns x 2 rows of 512x512 opaque square cells, zero gutters or outer margins. Preserve the top row's THREE DIFFERENT simple broad soil shapes and pebble arrangements, but recolor ALL three to the SAME consistent #91493f #b66349 #663031 palette and the SAME average brightness. They must not form light/dark stripes when tiled together. Biome character: rusty warm red compact soil, matte surfaces, absolutely NO lava pools, molten cracks, flames or glowing collectibles. Bottom left and bottom right: preserve two different subtle excavated-tunnel shapes, recolor to VERY DARK muted #3d202b, low contrast and no obstacles. Bottom middle: keep the existing blue-charcoal indestructible bedrock cell UNCHANGED. Preserve the approved soft hand-painted cartoon style, broad quiet forms and tiny number of details. Front-facing orthographic texture, usable at 64x64 pixels. Keep matching tile edge colors so random variants feel continuous. Do not add details or new objects. No borders or tile frame, no bevel rim, no text or labels, no typography, no watermark, no characters, no treasure, no gold, no fossils, no minerals, no gems. Output a usable texture atlas, not a presentation sheet."
+    }
+  ],
+  "rocks": {
+    "filename": "biome-rocks.png",
+    "width": 1254,
+    "height": 1254,
+    "reference": "../molly-surface/surface-rock.png",
+    "transparentBackground": true,
+    "prompt": "Use case: stylized-concept. Reference image: the supplied approved MollyMine simple rounded boulder, used ONLY as the artistic style reference. Generate a NEW production rock atlas on genuine transparent alpha background. Square 1024x1024 PNG, EXACT 2x2 grid of four 512x512 cells, zero drawn grid strokes, no labels. Each cell contains one separate compact squat boulder centered inside it, occupying around 420px width and 400px height with transparent padding at every edge, no clipping, no sprite crossing cell boundaries. Match the reference's broad smooth 4-to-5 facets, friendly chunky rounded silhouette, simple dark outline, flat front-facing orthographic view, gentle top-left light and slightly flat base, readable at 64x64. Row-major order: top left moss-green gray boulder #85a799 with just one subtle moss patch; top right slate-blue boulder #8698bb; bottom left muted lavender boulder #ac99c6 with NO crystals; bottom right muted rusty reddish boulder #b2867d with NO lava or glow. Four different silhouettes but the same proportions, simple facet count and line weight. Genuine transparency between/around all sprites, not a painted black or checkerboard background. No cast shadows, no halo, no floor, no scenery, no tiny textures, no small cracks, no faces, no gems, no loot, no text, no numbers, no labels, no watermark. Output only the usable sprite atlas."
+  }
+}
