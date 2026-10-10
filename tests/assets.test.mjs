@@ -104,6 +104,28 @@ test('drawMineral utilise le sprite du pack puis la gemme procédurale', () => {
   assert.equal(drew, 0);
 });
 
+test('le record mondial est validé avant envoi', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = [
+    html.match(/^function playerUuid[^\n]+/m)[0],
+    html.match(/^function buildRecord[^\n]+/m)[0],
+  ].join('\n');
+  const store = {};
+  const context = vm.createContext({
+    MINERALS: { gold: { color: '#ffcf63' } },
+    sellValue: () => 500,
+    localStorage: { getItem: k => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); } },
+    crypto: { randomUUID: () => 'uuid-test' },
+  });
+  vm.runInContext(code, context);
+  assert.equal(
+    JSON.stringify(vm.runInContext('buildRecord({id:"gold",grams:120,baseValue:100}," Molly ")', context)),
+    JSON.stringify({ player_uuid: 'uuid-test', pseudo: 'Molly', mineral_id: 'gold', grams: 120, valeur: 500 }));
+  assert.equal(vm.runInContext('buildRecord({id:"gold",grams:120},"")', context), null);
+  assert.equal(vm.runInContext('buildRecord({id:"inconnu",grams:120},"Molly")', context), null);
+  assert.equal(vm.runInContext('buildRecord({id:"gold",grams:99999},"Molly")', context), null);
+});
+
 test('le validateur accepte un slot mineral.* et refuse un id inconnu', () => {
   const root = mkdtempSync(join(tmpdir(), 'molly-minerals-'));
   const assets = join(root, 'assets');
