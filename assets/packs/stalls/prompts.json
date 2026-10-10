@@ -1,0 +1,22 @@
+{
+  "generator": "ComfyUI ou Gemini",
+  "date": "2026-10-10",
+  "format": "PNG à fond transparent, 206x190 conseillé (103x95 minimum), étal centré occupant environ 85 % de l’image.",
+  "style": "Soft hand-painted cartoon style matching MollyMine, front-facing, readable at small size, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one building only, not a presentation sheet.",
+  "stalls": [
+    {
+      "slot": "stall.shop",
+      "name": "Boutique de Gaspard",
+      "filename": "stall-shop.png",
+      "transparentBackground": true,
+      "prompt": "Use case: stylized-concept game sprite. Draw one small wooden hardware stall with a striped awning, tools and pickaxes hanging on the front, warm lantern tones (Boutique de Gaspard). Soft hand-painted cartoon style matching MollyMine, front-facing, readable at small size, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one building only, not a presentation sheet."
+    },
+    {
+      "slot": "stall.market",
+      "name": "Marché de Rose",
+      "filename": "stall-market.png",
+      "transparentBackground": true,
+      "prompt": "Use case: stylized-concept game sprite. Draw one small wooden market stall with a striped awning, crates and sparkling gems on display, fresh green and violet tones (Marché de Rose). Soft hand-painted cartoon style matching MollyMine, front-facing, readable at small size, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one building only, not a presentation sheet."
+    }
+  ]
+}

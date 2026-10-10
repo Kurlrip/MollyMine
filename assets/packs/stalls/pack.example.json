@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-stalls",
+  "name": "Molly Stalls",
+  "version": "1.0.0",
+  "license": {
+    "name": "Assets générés pour MollyMine",
+    "source": "Indiquer ici le modèle, la date et la facture ; usage commercial requis",
+    "commercialUse": true
+  },
+  "sprites": {
+    "stall.shop": {
+      "src": "stall-shop.png"
+    },
+    "stall.market": {
+      "src": "stall-market.png"
+    }
+  }
+}

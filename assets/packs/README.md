@@ -59,7 +59,8 @@ une image indisponible laisse les autres slots du pack utilisables.
 - `rock.0` à `rock.4`
 - `find.stone`
 - `gas`, `monster`, `warning`
-- `stall.shop`, `stall.market`
+- `stall.shop`, `stall.market` : les deux étals de la surface (voir
+  `stalls/README.md` et `stalls/prompts.json` pour les générer par IA).
 - `mineral.<id>` : un slot par pierre du jeu (27 au total, voir
   `minerals/README.md` et `minerals/prompts.json`). Le sprite remplace la
   gemme procédurale dans la carte à gratter, sur l’étal, dans le sac, le
