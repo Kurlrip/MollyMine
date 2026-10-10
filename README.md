@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.6.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -117,3 +117,10 @@ La V12.6.0 active `molly-biomes` et étend le style validé aux cinq zones : tro
 terres, deux fonds de tunnel et un rocher mobile par zone. Les quatre nouveaux
 atlas et l’atlas des rochers sont documentés dans `assets/packs/molly-biomes/`.
 La surface validée, la roche incassable et les règles de gameplay sont conservées.
+
+La V12.7.0 enchaîne les grattages : récupérer une pierre ouvre directement
+la carte suivante au lieu de refermer la fenêtre, avec un compteur visible
+(« encore N à gratter ») dans la modale et sur le bouton du camp. La
+durabilité de la pioche et la vie deviennent deux pastilles très lisibles en
+haut (alerte rouge sous 25 % / 30 PV), et les boutons du bas (Sac, Boutique,
+Marché, Corde, O₂) se redistribuent en grille responsive.
