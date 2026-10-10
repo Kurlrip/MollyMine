@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.2**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.3**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -134,3 +134,7 @@ La V12.7.2 allège l'écran de surface : le pied de page passe en mode compact
 au camp (Boutique/Marché déjà dans le hub, Corde et O2 toujours inactifs ici
 masqués, seul Sac reste ; ligne d'info et pavé tassés), et le hub recouvre
 moins la zone de jeu. Règles et déplacements inchangés.
+
+La V12.7.3 fige le pavé directionnel (identique au camp et en mine) et
+remplace le texte « N cartes · reste N » par une mini-carte affichant juste
+le numéro à gratter, avec un court libellé et un bouton « Gratter » simple.

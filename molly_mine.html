@@ -20,7 +20,7 @@
 .controls{flex-direction:column;gap:9px}.controls-main{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
 .card-tray{width:100%;display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid #81998244;border-radius:12px;background:#0e252b;min-height:55px}
 .card-fan{display:flex;align-items:center;padding-left:5px;min-width:40px;height:32px}.card-back{width:24px;height:31px;display:grid;place-items:center;background:linear-gradient(135deg,#60817d,#385456);border:1px solid #a5c8b2;border-radius:5px;color:#ffdf91;font-size:17px;margin-left:-5px;transform:rotate(-7deg)}.card-back:nth-child(2n){transform:rotate(5deg)}
-.card-caption{flex:1;min-width:0}.card-caption b{display:block;font-size:12px;color:#ffdc8e}.card-caption small{display:block;font-size:9px;color:#b5ccc2;margin-top:2px}.card-tray button{border-radius:9px;background:#ffd16a;padding:10px 9px;font-size:11px;min-height:36px}.card-tray button:disabled{background:#365257;color:#c8d9d0;opacity:.8}
+.card-caption{flex:1;min-width:0;display:flex;align-items:center;gap:8px}.card-caption b{display:grid;place-items:center;min-width:34px;height:40px;padding:0 7px;font-size:17px;font-weight:950;color:#ffdf91;background:linear-gradient(135deg,#60817d,#385456);border:1px solid #a5c8b2;border-radius:7px;transform:rotate(-3deg)}.card-caption small{display:block;font-size:9px;color:#b5ccc2;line-height:1.4}.card-tray button{border-radius:9px;background:#ffd16a;padding:10px 9px;font-size:11px;min-height:36px}.card-tray button:disabled{background:#365257;color:#c8d9d0;opacity:.8}
 .scratch-actions{flex-wrap:wrap}.scratch-actions button{flex:1;min-width:95px}#scratchLater{background:transparent;border:1px solid #617d75}#scratchQueueInfo{font-size:13px;font-weight:800;color:#0e252b;background:#ffd16a;border-radius:11px;padding:9px 12px;margin:8px 0;text-align:center}#scratchQueueInfo b{font-weight:950}#collect{font-size:15px;padding:15px}#scratchProgress{font-size:13px;font-weight:800;color:#ffe6a9}#collect.ready-flash{animation:collect-ready .8s ease-in-out 3;box-shadow:0 0 0 4px #ffd16a88,0 4px 0 #a67434}@keyframes collect-ready{50%{transform:scale(1.03);box-shadow:0 0 0 8px #ffd16a55,0 4px 0 #a67434}}#scratch.revealed-tap{cursor:pointer}.card-caption b{font-size:13px}.card-tray button{font-weight:900;font-size:12px;min-width:118px}
 @media(max-width:360px){.controls-main{gap:6px}.card-tray{padding:7px}.card-caption small{font-size:8px}}
 /* Au camp : écran allégé, la zone de jeu respire. Corde/O2 toujours inactifs ici,
@@ -32,8 +32,6 @@
 .controls.at-camp .cargo-value{font-size:19px;margin:0}
 .controls.at-camp .cargo-actions{margin-top:5px}
 .controls.at-camp .cargo-actions button{min-height:36px}
-.controls.at-camp .pad{grid-template-columns:40px 40px 40px;grid-template-rows:30px 30px 30px}
-.controls.at-camp .dir{font-size:16px;border-radius:10px}
 #app .surface-hub{bottom:8px}
 #app .surface-hub button{padding:9px 4px;font-size:11px}
 </style>
@@ -49,7 +47,7 @@
 <div class="veil" id="menu"><section class="panel" id="menuPanel"></section></div>
 <div class="veil hidden" id="scratchModal"><section class="panel"><div class="scratch-top"><span class="eyebrow">UNE DÉCOUVERTE !</span><span class="rarity" id="lootZone">SURFACE</span></div><div id="scratchQueueInfo"></div><h2 id="scratchTitle">Un petit coup de patte.</h2><p style="margin:0">Gratte la pellicule pour découvrir ta pierre.</p><div id="scratchBoard"><div class="loot"><canvas id="gemCanvas" width="190" height="170"></canvas><div id="lootName"></div><div id="lootWeight"></div><div id="lootValue"></div></div><canvas id="scratch" width="320" height="240" aria-label="Carte à gratter, utiliser le doigt ou la souris"></canvas></div><div id="scratchDanger" class="notice hidden" role="status"></div><div id="scratchProgress" aria-live="polite">Gratte au moins 45% de la carte</div><button id="collect" class="primary" disabled>Gratte pour récupérer</button><div class="scratch-actions"><button class="secondary" id="storeLoot">Au coffre</button><button class="secondary" id="scratchBag">Gérer mon sac</button><button class="secondary" id="leaveLoot">Laisser la pierre</button></div><button class="secondary" id="scratchLater">Garder cette carte pour plus tard</button><button id="scratchKeyboard">Révéler sans gratter · touche Entrée</button><p class="sub" style="text-align:center;margin-bottom:0">Grattage réservé à la surface. Les cartes restantes attendent dans ta pochette.</p></section></div>
 </main>
-<script id="buildInfo" type="application/json">{"version":"12.7.2","commit":null}</script>
+<script id="buildInfo" type="application/json">{"version":"12.7.3","commit":null}</script>
 <script>
 'use strict';
 /* MOLLY — un fichier, aucun serveur, aucune dépendance.
@@ -278,10 +276,10 @@ function updateCardTray(){
  const signature=count+':'+surface+':'+state;
  if(signature===cardTraySignature)return;cardTraySignature=signature;
  $('cardFan').innerHTML=Array.from({length:Math.min(5,Math.max(1,count))},()=>'<span class="card-back">?</span>').join('');
- $('cardCount').textContent=!count?'0 carte à gratter':count+' carte'+(count>1?'s':'')+' · reste '+count;
- $('cardHint').textContent=!count?'Creuse pour remplir ta pochette':surface?'De retour au camp : découvre tes trouvailles':'Mystère intact · grattage à la surface';
+ $('cardCount').textContent=String(count);
+ $('cardHint').textContent=!count?'Creuse pour remplir ta pochette':(count>1?'Cartes':'Carte')+(surface?' à découvrir':' · grattage à la surface');
  $('openCards').disabled=!surface||state!=='playing'||!sealedCards.length;
- $('openCards').textContent=surface?(count?'Gratter · '+count+' restante'+(count>1?'s':''):'Gratter'):'Au camp ↑';
+ $('openCards').textContent=surface?'Gratter':'Au camp ↑';
 }
 function beginDiscovery(z,existing=null){
  const card=existing||encounter(z);delete card.awaitingDiscovery;
