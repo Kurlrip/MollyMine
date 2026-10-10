@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.8.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.8.1**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -150,3 +150,7 @@ slot `mineral.<id>` (or, fer, gemmes…), affiché dans la carte à gratter, sur
 l'étal de Rose, dans le sac, le coffre et les cours. Slot absent ou illisible
 = gemme procédurale conservée. Le dossier `assets/packs/minerals/` fournit
 les prompts IA prêts à générer et un manifeste exemple à compléter.
+
+La V12.8.1 ajoute une remise à zéro sous l'accueil : premier appui = armement
+rouge de 8 secondes, second appui = effacement total de la sauvegarde et
+rechargement. Inaccessible en cours de partie.
