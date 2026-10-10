@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.8.1**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.9.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -154,3 +154,9 @@ les prompts IA prêts à générer et un manifeste exemple à compléter.
 La V12.8.1 ajoute une remise à zéro sous l'accueil : premier appui = armement
 rouge de 8 secondes, second appui = effacement total de la sauvegarde et
 rechargement. Inaccessible en cours de partie.
+
+La V12.9.0 resserre la difficulté : O2 +55 % en profondeur, minerai 8 % → 5 %
+des cases, gros lots moins fréquents, pioches plus chères (800 à 80 000) et
+moins endurantes, rochers un peu plus nombreux, morsure à −15 vie/−12 air.
+Sauvegardes compatibles : le terrain existant est conservé, la durabilité bois
+est ramenée à 70 au chargement.
