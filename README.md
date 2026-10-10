@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.3**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.4**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -138,3 +138,9 @@ moins la zone de jeu. Règles et déplacements inchangés.
 La V12.7.3 fige le pavé directionnel (identique au camp et en mine) et
 remplace le texte « N cartes · reste N » par une mini-carte affichant juste
 le numéro à gratter, avec un court libellé et un bouton « Gratter » simple.
+
+La V12.7.4 supprime la bande pochette du pied de page : « Gratter » et la
+mini-carte numérotée rejoignent le hub de surface (4 boutons), et en minage
+le nombre de cartes devient une 3e pastille en haut comme la pioche et la
+vie (masquée au camp où le hub l'affiche déjà). Les pastilles vie/pioche
+reçoivent enfin leur style très visible + alerte rouge.
