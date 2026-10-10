@@ -1,0 +1,211 @@
+{
+  "projet": "MollyMine — sprites à générer avec Gemini (ou ComfyUI)",
+  "mode_emploi": "Pour chaque entrée, copier la consigne dans Gemini, récupérer le PNG (fond transparent), le renommer en fichier_attendu et le placer dans le dossier indiqué. Puis activer le pack comme expliqué dans assets/packs/minerals/README.md ou assets/packs/stalls/README.md.",
+  "minerais": [
+    {
+      "slot": "mineral.gray",
+      "fichier_attendu": "assets/packs/minerals/gray.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Caillou gris",
+      "consigne": "Use case: stylized-concept game sprite. Draw one dull matte gray rounded pebble, plain and common (Caillou gris). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.clay",
+      "fichier_attendu": "assets/packs/minerals/clay.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Argile",
+      "consigne": "Use case: stylized-concept game sprite. Draw one warm terracotta clay lump, soft earthy surface (Argile). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.silver",
+      "fichier_attendu": "assets/packs/minerals/silver.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Pépite d'Argent",
+      "consigne": "Use case: stylized-concept game sprite. Draw one shiny silvery metallic nugget with bright highlights (Pépite d'Argent). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.roseQuartz",
+      "fichier_attendu": "assets/packs/minerals/roseQuartz.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Quartz Rose",
+      "consigne": "Use case: stylized-concept game sprite. Draw one raw pink quartz crystal cluster, soft rose facets (Quartz Rose). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.goldDust",
+      "fichier_attendu": "assets/packs/minerals/goldDust.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Poussière d'Or",
+      "consigne": "Use case: stylized-concept game sprite. Draw one small rough golden grains clustered into one nugget (Poussière d'Or). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.trilobite",
+      "fichier_attendu": "assets/packs/minerals/trilobite.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Fossile de Trilobite",
+      "consigne": "Use case: stylized-concept game sprite. Draw one beige stone slab with a trilobite fossil imprint on top (Fossile de Trilobite). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.hardRock",
+      "fichier_attendu": "assets/packs/minerals/hardRock.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Roche dure",
+      "consigne": "Use case: stylized-concept game sprite. Draw one plain compact moss-grey hard rock chunk, matte (Roche dure). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.gold",
+      "fichier_attendu": "assets/packs/minerals/gold.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Pépite d'Or",
+      "consigne": "Use case: stylized-concept game sprite. Draw one bright golden nugget, metallic shine (Pépite d'Or). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.amethyst",
+      "fichier_attendu": "assets/packs/minerals/amethyst.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Améthyste",
+      "consigne": "Use case: stylized-concept game sprite. Draw one violet-purple raw amethyst crystal points (Améthyste). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.jade",
+      "fichier_attendu": "assets/packs/minerals/jade.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Jade",
+      "consigne": "Use case: stylized-concept game sprite. Draw one smooth mint-green jade stone, polished soft glow (Jade). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.geode",
+      "fichier_attendu": "assets/packs/minerals/geode.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Géode de Cristal",
+      "consigne": "Use case: stylized-concept game sprite. Draw one CLOSED round rocky ball, dull bluish outside, NO visible crystals inside (Géode de Cristal). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.basalt",
+      "fichier_attendu": "assets/packs/minerals/basalt.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Basalte",
+      "consigne": "Use case: stylized-concept game sprite. Draw one dark slate-grey volcanic rock chunk, rough matte (Basalte). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.goldBar",
+      "fichier_attendu": "assets/packs/minerals/goldBar.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Lingot d'Or Pur (Brut)",
+      "consigne": "Use case: stylized-concept game sprite. Draw one short rough-cast golden bar, unpolished raw ingot (Lingot d'Or Pur (Brut)). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.platinumBar",
+      "fichier_attendu": "assets/packs/minerals/platinumBar.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Lingot de Platine",
+      "consigne": "Use case: stylized-concept game sprite. Draw one short rough-cast pale platinum bar, unpolished raw ingot (Lingot de Platine). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.emerald",
+      "fichier_attendu": "assets/packs/minerals/emerald.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Émeraude",
+      "consigne": "Use case: stylized-concept game sprite. Draw one raw emerald-green gemstone crystal (Émeraude). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.sapphire",
+      "fichier_attendu": "assets/packs/minerals/sapphire.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Saphir",
+      "consigne": "Use case: stylized-concept game sprite. Draw one raw sky-blue sapphire crystal (Saphir). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.meteorite",
+      "fichier_attendu": "assets/packs/minerals/meteorite.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Météorite Brute",
+      "consigne": "Use case: stylized-concept game sprite. Draw one dark pitted space rock with small craters, matte (Météorite Brute). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.rockQuartz",
+      "fichier_attendu": "assets/packs/minerals/rockQuartz.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Quartz de roche",
+      "consigne": "Use case: stylized-concept game sprite. Draw one clear translucent quartz cluster, icy pale facets (Quartz de roche). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.platinum",
+      "fichier_attendu": "assets/packs/minerals/platinum.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Platine massif",
+      "consigne": "Use case: stylized-concept game sprite. Draw one massive pale silvery platinum chunk, dense metal (Platine massif). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.diamond",
+      "fichier_attendu": "assets/packs/minerals/diamond.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Diamant Brut",
+      "consigne": "Use case: stylized-concept game sprite. Draw one raw uncut diamond crystal, pale ice-blue facets (Diamant Brut). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.ruby",
+      "fichier_attendu": "assets/packs/minerals/ruby.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Rubis Sang",
+      "consigne": "Use case: stylized-concept game sprite. Draw one deep red raw ruby crystal, rich saturated red (Rubis Sang). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.ether",
+      "fichier_attendu": "assets/packs/minerals/ether.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Minerai d'Éther",
+      "consigne": "Use case: stylized-concept game sprite. Draw one violet glowing ore rock with a soft magical light halo (Minerai d'Éther). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.slag",
+      "fichier_attendu": "assets/packs/minerals/slag.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Mâchefer chaud",
+      "consigne": "Use case: stylized-concept game sprite. Draw one dark scoriaceous slag chunk with glowing orange ember cracks (Mâchefer chaud). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.blueDiamond",
+      "fichier_attendu": "assets/packs/minerals/blueDiamond.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Diamant Bleu",
+      "consigne": "Use case: stylized-concept game sprite. Draw one raw vivid sky-blue diamond crystal (Diamant Bleu). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.magmaGold",
+      "fichier_attendu": "assets/packs/minerals/magmaGold.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Pépite d'Or Magmatique",
+      "consigne": "Use case: stylized-concept game sprite. Draw one orange-tinted golden nugget with a faint warm glow (Pépite d'Or Magmatique). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.blackOpal",
+      "fichier_attendu": "assets/packs/minerals/blackOpal.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Opale Noire",
+      "consigne": "Use case: stylized-concept game sprite. Draw one dark opal stone with violet inner fire iridescence (Opale Noire). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    },
+    {
+      "slot": "mineral.obsidian",
+      "fichier_attendu": "assets/packs/minerals/obsidian.png",
+      "format": "PNG carré à fond transparent, motif centré occupant environ 80 % de l’image, 256x256 conseillé (96x96 minimum). Un fichier par minerai.",
+      "pierre": "Obsidienne Magmatique",
+      "consigne": "Use case: stylized-concept game sprite. Draw one legendary glossy black volcanic glass shard with violet edge reflections (Obsidienne Magmatique). Single object centered and fully visible, soft hand-painted cartoon style matching MollyMine, front-facing, readable at 64x64 pixels, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one stone only, not a presentation sheet."
+    }
+  ],
+  "etals": [
+    {
+      "slot": "stall.shop",
+      "fichier_attendu": "assets/packs/stalls/stall-shop.png",
+      "format": "PNG à fond transparent, 206x190 conseillé (103x95 minimum), étal centré occupant environ 85 % de l’image.",
+      "etal": "Boutique de Gaspard",
+      "consigne": "Use case: stylized-concept game sprite. Draw one small wooden hardware stall with a striped awning, tools and pickaxes hanging on the front, warm lantern tones (Boutique de Gaspard). Soft hand-painted cartoon style matching MollyMine, front-facing, readable at small size, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one building only, not a presentation sheet."
+    },
+    {
+      "slot": "stall.market",
+      "fichier_attendu": "assets/packs/stalls/stall-market.png",
+      "format": "PNG à fond transparent, 206x190 conseillé (103x95 minimum), étal centré occupant environ 85 % de l’image.",
+      "etal": "Marché de Rose",
+      "consigne": "Use case: stylized-concept game sprite. Draw one small wooden market stall with a striped awning, crates and sparkling gems on display, fresh green and violet tones (Marché de Rose). Soft hand-painted cartoon style matching MollyMine, front-facing, readable at small size, transparent background, no ground shadow, no text, no watermark, no characters, no other objects. Output one building only, not a presentation sheet."
+    }
+  ]
+}
