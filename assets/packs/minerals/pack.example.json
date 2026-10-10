@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-minerals",
+  "name": "Molly Minerals",
+  "version": "1.0.0",
+  "license": {
+    "name": "Assets générés pour MollyMine",
+    "source": "Indiquer ici le modèle, la date et la facture ; usage commercial requis",
+    "commercialUse": true
+  },
+  "sprites": {
+    "mineral.gray": {
+      "src": "gray.png"
+    },
+    "mineral.clay": {
+      "src": "clay.png"
+    },
+    "mineral.silver": {
+      "src": "silver.png"
+    },
+    "mineral.roseQuartz": {
+      "src": "roseQuartz.png"
+    },
+    "mineral.goldDust": {
+      "src": "goldDust.png"
+    },
+    "mineral.trilobite": {
+      "src": "trilobite.png"
+    },
+    "mineral.hardRock": {
+      "src": "hardRock.png"
+    },
+    "mineral.gold": {
+      "src": "gold.png"
+    },
+    "mineral.amethyst": {
+      "src": "amethyst.png"
+    },
+    "mineral.jade": {
+      "src": "jade.png"
+    },
+    "mineral.geode": {
+      "src": "geode.png"
+    },
+    "mineral.basalt": {
+      "src": "basalt.png"
+    },
+    "mineral.goldBar": {
+      "src": "goldBar.png"
+    },
+    "mineral.platinumBar": {
+      "src": "platinumBar.png"
+    },
+    "mineral.emerald": {
+      "src": "emerald.png"
+    },
+    "mineral.sapphire": {
+      "src": "sapphire.png"
+    },
+    "mineral.meteorite": {
+      "src": "meteorite.png"
+    },
+    "mineral.rockQuartz": {
+      "src": "rockQuartz.png"
+    },
+    "mineral.platinum": {
+      "src": "platinum.png"
+    },
+    "mineral.diamond": {
+      "src": "diamond.png"
+    },
+    "mineral.ruby": {
+      "src": "ruby.png"
+    },
+    "mineral.ether": {
+      "src": "ether.png"
+    },
+    "mineral.slag": {
+      "src": "slag.png"
+    },
+    "mineral.blueDiamond": {
+      "src": "blueDiamond.png"
+    },
+    "mineral.magmaGold": {
+      "src": "magmaGold.png"
+    },
+    "mineral.blackOpal": {
+      "src": "blackOpal.png"
+    },
+    "mineral.obsidian": {
+      "src": "obsidian.png"
+    }
+  }
+}

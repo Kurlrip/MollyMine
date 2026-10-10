@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import vm from 'node:vm';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { ASSET_SLOTS, validateAssetPack } from '../scripts/asset-pack.mjs';
+import { ASSET_SLOTS, MINERAL_IDS, validateAssetPack } from '../scripts/asset-pack.mjs';
 
 test('les variantes graphiques utilisent leur slot puis le terrain commun si une image manque', () => {
   const html = readFileSync('molly_mine.html', 'utf8');
@@ -51,7 +51,7 @@ test('au chargement, un fichier absent et un crop invalide ne désactivent pas l
   }
   const context = vm.createContext({
     window: {}, document: { baseURI: 'https://example.test/MollyMine/' },
-    URL, Image: TestImage, setTimeout, clearTimeout,
+    URL, Image: TestImage, setTimeout, clearTimeout, MINERALS: {},
     $: () => null, sprites: new Map(), applyMollyAssetPack: () => {},
     fetch: async url => ({ ok: true, json: async () => url.pathname.endsWith('active-pack.json')
       ? { manifest: 'packs/test/pack.json' } : manifest }),
@@ -63,6 +63,70 @@ test('au chargement, un fichier absent et un crop invalide ne désactivent pas l
   assert.equal(context.window.MOLLY_ASSETS.status, 'ready');
   assert.deepEqual([...context.window.MOLLY_ASSETS.sprites.keys()], ['terrain.0']);
   assert.equal(context.window.MOLLY_ASSETS.errors.length, 2);
+});
+
+test('les slots mineral.* sont synchronisés entre validateur et jeu, avec repli intégré', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  // Identifiants réels issus des tables de butin du jeu.
+  const lootStart = html.indexOf('const LOOT=');
+  const lootSrc = html.slice(lootStart, html.indexOf('];', lootStart) + 1);
+  const lootIds = vm.runInContext(`${lootSrc};LOOT.flat().map(i=>i.id)`, vm.createContext({}));
+  assert.deepEqual(new Set(lootIds), new Set(MINERAL_IDS));
+  // Ensemble du jeu : MINERALS réduit aux ids du validateur pour isoler la construction des slots.
+  const code = html.slice(html.indexOf('const ASSET_SLOTS='), html.indexOf('function tileSprite('));
+  const stubMinerals = Object.fromEntries(MINERAL_IDS.map(id => [id, {}]));
+  const context = vm.createContext({ window: {}, MINERALS: stubMinerals });
+  vm.runInContext(code, context);
+  const gameSlots = vm.runInContext('[...ASSET_SLOTS]', context);
+  for (const id of MINERAL_IDS) assert.ok(gameSlots.includes(`mineral.${id}`), id);
+  assert.ok(gameSlots.includes('find.stone'));
+});
+
+test('drawMineral utilise le sprite du pack puis la gemme procédurale', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = [
+    html.match(/^function poly[^\n]+/m)[0],
+    html.match(/^function gem[^\n]+/m)[0],
+    'function packedSprite(slot){return null}',
+    html.match(/^function drawPackedSprite[^\n]+/m)[0],
+    html.match(/^function drawMineral[^\n]+/m)[0],
+  ].join('\n');
+  const noop = () => {};
+  const ctx2d = () => ({ save: noop, restore: noop, translate: noop, scale: noop,
+    beginPath: noop, moveTo: noop, lineTo: noop, closePath: noop, fill: noop,
+    stroke: noop, drawImage: noop, set fillStyle(v) {}, set strokeStyle(v) {}, set lineWidth(v) {} });
+  const context = vm.createContext({ MINERALS: { gold: { color: '#ffcf63' } } });
+  vm.runInContext(code, context);
+  // Sans sprite : repli procédural, aucun drawImage.
+  let drew = 0;
+  context.c = { ...ctx2d(), drawImage: () => { drew++; } };
+  vm.runInContext('drawMineral(c,"gold",50,50,20)', context);
+  assert.equal(drew, 0);
+});
+
+test('le validateur accepte un slot mineral.* et refuse un id inconnu', () => {
+  const root = mkdtempSync(join(tmpdir(), 'molly-minerals-'));
+  const assets = join(root, 'assets');
+  const packDir = join(assets, 'packs', 'test');
+  mkdirSync(packDir, { recursive: true });
+  // PNG RGBA 1x1 transparent.
+  writeFileSync(join(packDir, 'gold.png'), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M/wHwAF/gL+X5W8WQAAAABJRU5ErkJggg==', 'base64'));
+  writeFileSync(join(assets, 'active-pack.json'), JSON.stringify({ manifest: 'packs/test/pack.json' }));
+  const base = {
+    schemaVersion: 1,
+    id: 'test', name: 'Test', version: '1.0.0',
+    license: { name: 'Test', source: 'test fixture', commercialUse: true },
+    sprites: { 'mineral.gold': { src: 'gold.png' } },
+  };
+  const save = value => writeFileSync(join(packDir, 'pack.json'), JSON.stringify(value));
+  try {
+    save(base);
+    assert.equal(validateAssetPack(root).manifest.id, 'test');
+    save({ ...base, sprites: { 'mineral.unobtainium': { src: 'gold.png' } } });
+    assert.throws(() => validateAssetPack(root), /Slot inconnu/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('le pack actif est valide et déclare sa licence commerciale', () => {

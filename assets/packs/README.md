@@ -60,9 +60,14 @@ une image indisponible laisse les autres slots du pack utilisables.
 - `find.stone`
 - `gas`, `monster`, `warning`
 - `stall.shop`, `stall.market`
+- `mineral.<id>` : un slot par pierre du jeu (27 au total, voir
+  `minerals/README.md` et `minerals/prompts.json`). Le sprite remplace la
+  gemme procédurale dans la carte à gratter, sur l’étal, dans le sac, le
+  coffre et les cours. Slot absent ou illisible = gemme procédurale.
 
 Tailles conseillées : 64×64 pour terrain, roche et dangers ; 128×128 pour un
-monstre ; 206×190 pour un stand. Utiliser une transparence réelle pour les objets.
+monstre ; 206×190 pour un stand ; 256×256 à fond transparent pour un minerai
+(motif centré ~80 %). Utiliser une transparence réelle pour les objets.
 Éviter le texte dans les images : l’interface et la localisation restent en HTML.
 
 Pour un pack acheté, conserver hors du dépôt la facture et les conditions de

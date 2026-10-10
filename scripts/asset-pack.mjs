@@ -12,6 +12,17 @@ export const ASSET_SLOTS = new Set([
   'find.stone', 'gas', 'monster', 'warning', 'stall.shop', 'stall.market',
 ]);
 
+// Un slot par minerai : même identifiant que dans LOOT (molly_mine.html).
+// Le jeu affiche le sprite du pack quand il existe, sinon la gemme procédurale.
+export const MINERAL_IDS = [
+  'gray', 'clay', 'silver', 'roseQuartz', 'goldDust', 'trilobite',
+  'hardRock', 'gold', 'amethyst', 'jade', 'geode',
+  'basalt', 'goldBar', 'platinumBar', 'emerald', 'sapphire', 'meteorite',
+  'rockQuartz', 'platinum', 'diamond', 'ruby', 'ether',
+  'slag', 'blueDiamond', 'magmaGold', 'blackOpal', 'obsidian',
+];
+for (const id of MINERAL_IDS) ASSET_SLOTS.add(`mineral.${id}`);
+
 function readJson(path) {
   try { return JSON.parse(readFileSync(path, 'utf8')); }
   catch (error) { throw new Error(`${path}: JSON invalide (${error.message})`); }

@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.7.4**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.8.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -144,3 +144,9 @@ mini-carte numérotée rejoignent le hub de surface (4 boutons), et en minage
 le nombre de cartes devient une 3e pastille en haut comme la pioche et la
 vie (masquée au camp où le hub l'affiche déjà). Les pastilles vie/pioche
 reçoivent enfin leur style très visible + alerte rouge.
+
+La V12.8.0 ouvre les 27 pierres aux packs d'assets : chaque minerai a son
+slot `mineral.<id>` (or, fer, gemmes…), affiché dans la carte à gratter, sur
+l'étal de Rose, dans le sac, le coffre et les cours. Slot absent ou illisible
+= gemme procédurale conservée. Le dossier `assets/packs/minerals/` fournit
+les prompts IA prêts à générer et un manifeste exemple à compléter.
