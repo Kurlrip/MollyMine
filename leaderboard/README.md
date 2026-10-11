@@ -24,15 +24,20 @@ Classement mondial minimal, sans serveur à maintenir : une table Supabase
 - Hors-ligne ou non configuré : le panneau l’indique, le reste du jeu
   fonctionne normalement.
 
-## Phase 2 : login Google (optionnel)
+## Login Google (activé côté jeu depuis la 12.13.0)
 
-1. Créer un identifiant OAuth Google (écran de consentement + client Web) et
-   déclarer comme origine et redirection l’URL du site
-   (`https://kurlrip.github.io/MollyMine/`).
-2. L’ajouter dans Supabase : Authentication → Providers → Google.
-3. Me transmettre l’info : j’ajoute le bouton « Se connecter avec Google »
-   (flux implicite, sans dépendance) et le jeton servira d’identifiant à la
-   place de la clé anonyme. Le mode pseudo libre restera disponible.
+1. Dans Google Cloud : écran de consentement OAuth + client Web. Origines
+   JavaScript autorisées : `https://hhybotjdatsstrvlgmjg.supabase.co`.
+   URI de redirection : `https://hhybotjdatsstrvlgmjg.supabase.co/auth/v1/callback`.
+2. Dans Supabase : Authentication → Providers → Google → activé avec
+   l’identifiant client et le secret Google.
+3. Dans Supabase : Authentication → URL Configuration → ajouter aux
+   Redirect URLs (lignes séparées) :
+   `https://kurlrip.github.io/MollyMine/` et
+   `https://kurlrip.github.io/MollyMine/index.html`.
+4. Côté jeu, rien à configurer : l’accueil propose « Se connecter avec
+   Google » (flux PKCE, sans dépendance). Connecté, le record suit le compte
+   sur tous les appareils ; sinon le mode pseudo libre continue.
 
 Facebook est techniquement possible via le même mécanisme, mais demande une
 app Meta + politique de confidentialité : déconseillé pour ce jeu.

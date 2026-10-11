@@ -108,10 +108,12 @@ test('le record mondial est validé avant envoi', () => {
   const html = readFileSync('molly_mine.html', 'utf8');
   const code = [
     html.match(/^function playerUuid[^\n]+/m)[0],
+    html.match(/^function boardIdentity[^\n]+/m)[0],
     html.match(/^function buildRecord[^\n]+/m)[0],
   ].join('\n');
   const store = {};
   const context = vm.createContext({
+    authSession: null,
     MINERALS: { gold: { color: '#ffcf63' } },
     sellValue: () => 500,
     localStorage: { getItem: k => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); } },
@@ -121,9 +123,44 @@ test('le record mondial est validé avant envoi', () => {
   assert.equal(
     JSON.stringify(vm.runInContext('buildRecord({id:"gold",grams:120,baseValue:100}," Molly ")', context)),
     JSON.stringify({ player_uuid: 'uuid-test', pseudo: 'Molly', mineral_id: 'gold', grams: 120, valeur: 500 }));
+  context.authSession = { user: { id: 'user-1' } };
+  assert.equal(
+    JSON.parse(JSON.stringify(vm.runInContext('buildRecord({id:"gold",grams:120,baseValue:100},"Molly")', context))).player_uuid,
+    'user-1');
   assert.equal(vm.runInContext('buildRecord({id:"gold",grams:120},"")', context), null);
   assert.equal(vm.runInContext('buildRecord({id:"inconnu",grams:120},"Molly")', context), null);
   assert.equal(vm.runInContext('buildRecord({id:"gold",grams:99999},"Molly")', context), null);
+});
+
+test('les trouvailles donnent un fragment direct et parfois une carte jackpot', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = html.slice(html.indexOf('const BAG_CAPACITY='), html.indexOf('let moveRepeatDelay'))
+    + html.slice(html.indexOf('function resolveFind'), html.indexOf('function finishDiscovery'));
+  const context = vm.createContext({
+    MINERALS: { gold: { name: "Pépite d'Or", price: 38 } },
+    inventory: [], sealedCards: [], uidCounter: 0, extractionEffects: [],
+    reducedMotion: true,
+    encounter: () => ({ uid: 1, id: 'gold', grams: 100, baseValue: 3800, zone: 1, originX: 5, originY: 9 }),
+    seedVein: () => {},
+    mass: (items = context.inventory) => items.reduce((s, i) => s + i.grams, 0),
+    toast: () => {}, persist: () => {}, updateHUD: () => {},
+    rand: () => 0.05, $: () => null,
+  });
+  vm.runInContext(code, context);
+  vm.runInContext('resolveFind(1,5,9)', context);
+  assert.equal(context.inventory.length, 1);
+  assert.equal(context.inventory[0].fragment, true);
+  assert.equal(context.inventory[0].grams, 3);
+  assert.equal(context.sealedCards.length, 1);
+  context.rand = () => 0.5;
+  vm.runInContext('resolveFind(1,5,9)', context);
+  assert.equal(context.inventory.length, 2);
+  assert.equal(context.sealedCards.length, 1);
+  context.inventory = [{ grams: 5000 }];
+  context.sealedCards = [];
+  vm.runInContext('resolveFind(1,5,9)', context);
+  assert.equal(context.inventory.length, 1);
+  assert.equal(context.sealedCards.length, 0);
 });
 
 test('le validateur accepte un slot mineral.* et refuse un id inconnu', () => {

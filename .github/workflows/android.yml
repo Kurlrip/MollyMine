@@ -1,0 +1,52 @@
+name: APK MollyMine
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    name: Construire l'APK debug
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Installer le SDK Android
+        uses: android-actions/setup-android@v3
+      - name: Installer les dependances
+        run: npm install --no-audit --no-fund
+      - name: Verifier le jeu
+        run: node --test
+      - name: Preparer le site et synchroniser
+        run: |
+          node scripts/build.mjs
+          rm -rf www && cp -r _site www
+          npx cap add android
+          node scripts/android-manifest.mjs
+          npx cap sync android
+        env:
+          ADMOB_APP_ID: ${{ secrets.ADMOB_APP_ID }}
+      - name: Construire l'APK debug
+        run: ./android/gradlew -p android assembleDebug
+      - name: Publier l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: mollymine-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk

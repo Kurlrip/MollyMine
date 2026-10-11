@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.10.2**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.13.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -166,3 +166,9 @@ La V12.10.2 prépare les Légendes mondiales : onglet au camp avec deux tris
 validation locale et bornes SQL. Le classement reste dormant tant que l'URL
 et la clé Supabase ne sont pas renseignées (voir leaderboard/README.md) ;
 le login Google suivra en phase 2.
+
+La V12.11.0 prépare l’APK (Capacitor) : pubs récompensées +1 carte et +75 air visibles uniquement dans l’appli avec IDs de test, bouton retour Android géré, workflow CI qui construit l’APK debug. Web inchangé.
+
+La V12.12.0 change la boucle : chaque trouvaille donne un fragment direct au sac (2 à 25 g, 3 % de la pierre), et 1 fois sur 10 une carte jackpot (grosse pierre à gratter). Commandes de Rose et don de collection réservés aux pièces entières.
+
+La V12.13.0 ajoute le choix de compte sur l’accueil : connexion Google (PKCE, sans dépendance, record lié au compte sur tous les appareils) ou anonyme en pseudo libre. Jeton rafraîchi seul, repli anonyme conservé.
