@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.10.1**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.10.2**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -161,7 +161,7 @@ moins endurantes, rochers un peu plus nombreux, morsure à −15 vie/−12 air.
 Sauvegardes compatibles : le terrain existant est conservé, la durabilité bois
 est ramenée à 70 au chargement.
 
-La V12.10.1 prépare les Légendes mondiales : onglet au camp avec deux tris
+La V12.10.2 prépare les Légendes mondiales : onglet au camp avec deux tris
 (Plus lourdes / Plus précieuses) et bouton Publier sur chaque pierre, avec
 validation locale et bornes SQL. Le classement reste dormant tant que l'URL
 et la clé Supabase ne sont pas renseignées (voir leaderboard/README.md) ;
