@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "license": {
     "name": "Illustrations originales générées pour MollyMine",
-    "source": "Codex image_gen, 2026-10-09 ; prompts.json ; surface : molly-surface ; pierre cachée : molly-default",
+    "source": "Codex image_gen, 2026-10-09 ; prompts.json ; surface : molly-surface ; pierre cachée : molly-default ; minerais Gemini 2026-10-11 (molly-minerals) ; étals Gemini 2026-10-11 (molly-stalls)",
     "commercialUse": true
   },
   "sprites": {
@@ -458,6 +458,93 @@
         512,
         512
       ]
+    },
+    "mineral.gray": {
+      "src": "../minerals/gray.png"
+    },
+    "mineral.clay": {
+      "src": "../minerals/clay.png"
+    },
+    "mineral.silver": {
+      "src": "../minerals/silver.png"
+    },
+    "mineral.roseQuartz": {
+      "src": "../minerals/roseQuartz.png"
+    },
+    "mineral.goldDust": {
+      "src": "../minerals/goldDust.png"
+    },
+    "mineral.trilobite": {
+      "src": "../minerals/trilobite.png"
+    },
+    "mineral.hardRock": {
+      "src": "../minerals/hardRock.png"
+    },
+    "mineral.gold": {
+      "src": "../minerals/gold.png"
+    },
+    "mineral.amethyst": {
+      "src": "../minerals/amethyst.png"
+    },
+    "mineral.jade": {
+      "src": "../minerals/jade.png"
+    },
+    "mineral.geode": {
+      "src": "../minerals/geode.png"
+    },
+    "mineral.basalt": {
+      "src": "../minerals/basalt.png"
+    },
+    "mineral.goldBar": {
+      "src": "../minerals/goldBar.png"
+    },
+    "mineral.platinumBar": {
+      "src": "../minerals/platinumBar.png"
+    },
+    "mineral.emerald": {
+      "src": "../minerals/emerald.png"
+    },
+    "mineral.sapphire": {
+      "src": "../minerals/sapphire.png"
+    },
+    "mineral.meteorite": {
+      "src": "../minerals/meteorite.png"
+    },
+    "mineral.rockQuartz": {
+      "src": "../minerals/rockQuartz.png"
+    },
+    "mineral.platinum": {
+      "src": "../minerals/platinum.png"
+    },
+    "mineral.diamond": {
+      "src": "../minerals/diamond.png"
+    },
+    "mineral.ruby": {
+      "src": "../minerals/ruby.png"
+    },
+    "mineral.ether": {
+      "src": "../minerals/ether.png"
+    },
+    "mineral.slag": {
+      "src": "../minerals/slag.png"
+    },
+    "mineral.blueDiamond": {
+      "src": "../minerals/blueDiamond.png"
+    },
+    "mineral.magmaGold": {
+      "src": "../minerals/magmaGold.png"
+    },
+    "mineral.blackOpal": {
+      "src": "../minerals/blackOpal.png"
+    },
+    "mineral.obsidian": {
+      "src": "../minerals/obsidian.png"
+    },
+    "stall.shop": {
+      "src": "../stalls/stall-shop.png"
+    },
+    "stall.market": {
+      "src": "../stalls/stall-market.png"
     }
   }
 }

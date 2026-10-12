@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.13.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.14.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -172,3 +172,5 @@ La V12.11.0 prépare l’APK (Capacitor) : pubs récompensées +1 carte et +75 a
 La V12.12.0 change la boucle : chaque trouvaille donne un fragment direct au sac (2 à 25 g, 3 % de la pierre), et 1 fois sur 10 une carte jackpot (grosse pierre à gratter). Commandes de Rose et don de collection réservés aux pièces entières.
 
 La V12.13.0 ajoute le choix de compte sur l’accueil : connexion Google (PKCE, sans dépendance, record lié au compte sur tous les appareils) ou anonyme en pseudo libre. Jeton rafraîchi seul, repli anonyme conservé.
+
+La V12.14.0 active les visuels IA : 27 minerais et 2 étals générés rejoignent le pack molly-biomes (73 slots), affichés dans la carte, l’étal, le sac, le coffre et les cours.
