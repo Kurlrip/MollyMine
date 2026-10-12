@@ -33,8 +33,9 @@ Classement mondial minimal, sans serveur à maintenir : une table Supabase
    l’identifiant client et le secret Google.
 3. Dans Supabase : Authentication → URL Configuration → ajouter aux
    Redirect URLs (lignes séparées) :
-   `https://kurlrip.github.io/MollyMine/` et
-   `https://kurlrip.github.io/MollyMine/index.html`.
+   `https://kurlrip.github.io/MollyMine/`,
+   `https://kurlrip.github.io/MollyMine/index.html` et
+   `com.mollymine.game://login-callback` (retour direct dans l’appli).
 4. Côté jeu, rien à configurer : l’accueil propose « Se connecter avec
    Google » (flux PKCE, sans dépendance). Connecté, le record suit le compte
    sur tous les appareils ; sinon le mode pseudo libre continue.
