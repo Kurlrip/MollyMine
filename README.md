@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.15.0**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.15.1**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -77,8 +77,8 @@ praticable au départ. Les dangers peuvent toujours apparaître dans les salles.
 
 Les sauvegardes V12/V12.1 restent compatibles et conservent leur ancien terrain.
 Depuis la V12.14.1, la création d’une nouvelle concession est désactivée :
-ni l’accueil ni la boutique ne la proposent ; seule la RAZ sous l’accueil
-recommence une partie.
+ni l’accueil ni la boutique ne la proposent. Depuis la V12.15.1, le bouton
+de remise à zéro est lui aussi retiré : la partie continue là où elle en est.
 
 ## Packs d’assets
 
