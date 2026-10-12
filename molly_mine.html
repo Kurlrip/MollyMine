@@ -30,6 +30,8 @@
 .controls.at-camp .cargo-actions button{min-height:36px}
 #app .surface-hub{bottom:8px}
 #app .surface-hub button{padding:9px 4px;font-size:11px}
+/* Lisibilité globale : textes et images un cran au-dessus. */
+body{font-size:16px}.panel p{font-size:14px}.item p{font-size:12.5px}.item-title{font-size:14.5px}.item-actions button{font-size:12.5px;padding:10px}.quote-table{font-size:12px}.quote-table th{font-size:10.5px}.market-row{font-size:13.5px}.tabs button{font-size:12.5px}.notice{font-size:13px}.sub{font-size:11px}.cargo-actions button{font-size:12.5px}.surface-hub button{font-size:13px}.surface-hub small{font-size:9px}.gear-pill{font-size:13px}#scratchQueueInfo{font-size:14px}#scratchProgress{font-size:14px}.stone-name{font-size:12px}.order-needs{font-size:13px}.shop-hero p{font-size:13px}.mineral-chip{width:28px;height:28px}.stone-figure{width:100px}.stone-figure img{width:76px;height:76px}.stone-fallback{font-size:54px;line-height:76px}.hub-card{min-width:34px;height:34px;font-size:17px}.loot-pop{font-size:13px}.loot-pop img{width:26px;height:26px}
 </style>
 </head>
 <body>
@@ -43,7 +45,7 @@
 <div class="veil" id="menu"><section class="panel" id="menuPanel"></section></div>
 <div class="veil hidden" id="scratchModal"><section class="panel"><div class="scratch-top"><span class="eyebrow">UNE DÉCOUVERTE !</span><span class="rarity" id="lootZone">SURFACE</span></div><div id="scratchQueueInfo"></div><button id="adCard" class="ads-btn secondary">🎬 Pub : +1 carte</button><h2 id="scratchTitle">Un petit coup de patte.</h2><p style="margin:0">Gratte la pellicule pour découvrir ta pierre.</p><div id="scratchBoard"><div class="loot"><canvas id="gemCanvas" width="190" height="170"></canvas><div id="lootName"></div><div id="lootWeight"></div><div id="lootValue"></div></div><canvas id="scratch" width="320" height="240" aria-label="Carte à gratter, utiliser le doigt ou la souris"></canvas></div><div id="scratchDanger" class="notice hidden" role="status"></div><div id="scratchProgress" aria-live="polite">Gratte au moins 45% de la carte</div><button id="collect" class="primary" disabled>Gratte pour récupérer</button><div class="scratch-actions"><button class="secondary" id="storeLoot">Au coffre</button><button class="secondary" id="scratchBag">Gérer mon sac</button><button class="secondary" id="leaveLoot">Laisser la pierre</button></div><button class="secondary" id="scratchLater">Garder cette carte pour plus tard</button><button id="scratchKeyboard">Révéler sans gratter · touche Entrée</button><p class="sub" style="text-align:center;margin-bottom:0">Grattage réservé à la surface. Les cartes restantes attendent dans ta pochette.</p></section></div>
 </main>
-<script id="buildInfo" type="application/json">{"version":"12.15.2","commit":null}</script>
+<script id="buildInfo" type="application/json">{"version":"12.15.3","commit":null}</script>
 <script>
 'use strict';
 /* MOLLY — un fichier, aucun serveur, aucune dépendance.
