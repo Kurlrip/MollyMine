@@ -1,8 +1,8 @@
 {
   "jeu": "Molly — Sous la surface",
-  "version": "12.15.1",
-  "date": "2026-10-11",
+  "version": "12.15.2",
+  "date": "2026-10-12",
   "fichier": "molly_mine.html",
-  "sha256": "8d522b2a33d8d5f00b9b096df1ea99125a4b868ef3e324366d332df3324e8704",
+  "sha256": "a094dccba7988788e493f9d7678b3b3f4b79abe2fa14ab56e10eefeb801b169d",
   "autonome": true
 }

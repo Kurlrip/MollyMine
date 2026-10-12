@@ -43,7 +43,7 @@
 <div class="veil" id="menu"><section class="panel" id="menuPanel"></section></div>
 <div class="veil hidden" id="scratchModal"><section class="panel"><div class="scratch-top"><span class="eyebrow">UNE DÉCOUVERTE !</span><span class="rarity" id="lootZone">SURFACE</span></div><div id="scratchQueueInfo"></div><button id="adCard" class="ads-btn secondary">🎬 Pub : +1 carte</button><h2 id="scratchTitle">Un petit coup de patte.</h2><p style="margin:0">Gratte la pellicule pour découvrir ta pierre.</p><div id="scratchBoard"><div class="loot"><canvas id="gemCanvas" width="190" height="170"></canvas><div id="lootName"></div><div id="lootWeight"></div><div id="lootValue"></div></div><canvas id="scratch" width="320" height="240" aria-label="Carte à gratter, utiliser le doigt ou la souris"></canvas></div><div id="scratchDanger" class="notice hidden" role="status"></div><div id="scratchProgress" aria-live="polite">Gratte au moins 45% de la carte</div><button id="collect" class="primary" disabled>Gratte pour récupérer</button><div class="scratch-actions"><button class="secondary" id="storeLoot">Au coffre</button><button class="secondary" id="scratchBag">Gérer mon sac</button><button class="secondary" id="leaveLoot">Laisser la pierre</button></div><button class="secondary" id="scratchLater">Garder cette carte pour plus tard</button><button id="scratchKeyboard">Révéler sans gratter · touche Entrée</button><p class="sub" style="text-align:center;margin-bottom:0">Grattage réservé à la surface. Les cartes restantes attendent dans ta pochette.</p></section></div>
 </main>
-<script id="buildInfo" type="application/json">{"version":"12.15.1","commit":null}</script>
+<script id="buildInfo" type="application/json">{"version":"12.15.2","commit":null}</script>
 <script>
 'use strict';
 /* MOLLY — un fichier, aucun serveur, aucune dépendance.
@@ -214,8 +214,8 @@ function resetWorld(){discoveryRemaining=0;extractionEffects=[];lastOreHit=null;
  setCell(x,7,ORE);setCell(x-1,9,ORE);setCell(x+2,6,EMPTY);rocks.set(key(x+2,6),{x:x+2,y:6,ry:6,fall:0});
  bag=0;finds=0;o2=maxO2();runBest=0;hazardClock=8;enemyClock=0;hurtClock=0;trip=false;rockClock=0;moveClock=0;lastZone=0;particles=[];pendingLoot=null;facing=1;moveAnim=0;miningAnim=0;mollyMineTime=0;camera.x=(x+.5)*TILE_SIZE;camera.y=(SURFACE_Y+.5)*TILE_SIZE;clearInputs();updateHUD()}
 function handedness(){try{return localStorage.getItem('molly-handed')||'right'}catch(e){return 'right'}}
-function applyHandedness(){const r=handedness()==='right';if($('controls'))$('controls').classList.toggle('pad-left',r)}
-function handHTML(){const h=handedness();return '<div class="hand-pick"><button data-hand="left" class="'+(h==='left'?'selected':'')+'">🤚 Gaucher<small>pad à droite</small></button><button data-hand="right" class="'+(h==='right'?'selected':'')+'">🤚 Droitier<small>pad à gauche</small></button></div>'}
+function applyHandedness(){const l=handedness()==='left';if($('controls'))$('controls').classList.toggle('pad-left',l)}
+function handHTML(){const h=handedness();return '<div class="hand-pick"><button data-hand="left" class="'+(h==='left'?'selected':'')+'">🤚 Gaucher<small>pad à gauche</small></button><button data-hand="right" class="'+(h==='right'?'selected':'')+'">🤚 Droitier<small>pad à droite</small></button></div>'}
 function wireHandedness(){const el=$('handPick');if(!el)return;el.innerHTML=handHTML();el.querySelectorAll('button').forEach(b=>{b.onclick=()=>{try{localStorage.setItem('molly-handed',b.dataset.hand)}catch(e){}applyHandedness();wireHandedness()}})}
 function clearInputs(){inputs.clear();document.querySelectorAll('.dir').forEach(b=>b.classList.remove('active'))}
 function toast(message){$('toast').textContent=message;$('toast').classList.add('show');toastTime=3.5}
