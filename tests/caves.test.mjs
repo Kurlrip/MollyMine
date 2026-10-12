@@ -22,7 +22,7 @@ test('200 seeds: exactly one 2–6 tile opening at each zone boundary, sealed ma
   const positions = new Set(), widths = new Set();
   for (let seed = 1; seed <= 200; seed++) {
     const run = world(seed);
-    run('generate(170)');
+    run('generate(230)');
     const gates = JSON.parse(run(`JSON.stringify([1,2,3,4].map(i=>caveGate(worldSeed,i)))`));
     for (const gate of gates) {
       positions.add(gate.x); widths.add(gate.width);
@@ -82,8 +82,8 @@ test('incremental generation and resumed saves produce the same deeper terrain',
 test('bedrock resists terrain edits, while ordinary soil can still be mined', () => {
   const run = world(77);
   run('generate(150)');
-  run('setCell(1,16,EMPTY);setCell(0,20,ORE);setCell(24,12,EMPTY)');
-  assert.equal(run('rows[16][1]'), 3);
+  run('setCell(1,26,EMPTY);setCell(0,20,ORE);setCell(24,12,EMPTY)');
+  assert.equal(run('rows[26][1]'), 3);
   assert.equal(run('rows[20][0]'), 3);
   assert.equal(run('rows[12][24]'), 0);
 });
@@ -94,5 +94,5 @@ test('legacy generator remains available for an existing concession', () => {
   assert.equal(run('rows[16].slice(1,-1).every(tile=>tile!==WALL)'), true);
   assert.equal(run('rows.length'), 151);
   run('worldGeneration=2;rows=[];rocks.clear();gas.clear();enemies=[];generated=0;generate(150)');
-  assert.equal(run('rows[16].filter(tile=>tile===WALL).length>=42'), true);
+  assert.equal(run('rows[26].filter(tile=>tile===WALL).length>=90'), true);
 });
