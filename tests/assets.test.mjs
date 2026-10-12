@@ -142,6 +142,7 @@ test('les trouvailles donnent un fragment direct et parfois une carte jackpot', 
     reducedMotion: true,
     encounter: () => ({ uid: 1, id: 'gold', grams: 100, baseValue: 3800, zone: 1, originX: 5, originY: 9 }),
     seedVein: () => {},
+    mineralChip: () => 'chip', feedPop: () => {},
     mass: (items = context.inventory) => items.reduce((s, i) => s + i.grams, 0),
     toast: () => {}, persist: () => {}, updateHUD: () => {},
     rand: () => 0.05, $: () => null,
@@ -161,6 +162,28 @@ test('les trouvailles donnent un fragment direct et parfois une carte jackpot', 
   vm.runInContext('resolveFind(1,5,9)', context);
   assert.equal(context.inventory.length, 1);
   assert.equal(context.sealedCards.length, 0);
+});
+
+test('le secours anti-softlock demande confirmation puis applique le malus de mort', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  const code = html.slice(html.indexOf('let rescueArmed'), html.indexOf('const DIRS='));
+  const context = vm.createContext({
+    state: 'playing', player: { y: 10 }, SURFACE_Y: 5,
+    inventory: [{ uid: 1 }, { uid: 2 }, { uid: 3 }], sealedCards: [{ uid: 4 }],
+    pendingLoot: null, rescued: false, surfaced: false,
+    depthAt: y => Math.max(0, (y - 5) * 5),
+    rand: () => 0, toast: () => {}, persist: () => {}, updateHUD: () => {},
+    surfacePosition: () => {}, arriveSurface: () => { context.surfaced = true; },
+    setTimeout: () => 0, clearTimeout: () => {},
+  });
+  vm.runInContext(code, context);
+  vm.runInContext('rescue()', context);
+  assert.equal(context.inventory.length, 3);
+  assert.equal(context.surfaced, false);
+  vm.runInContext('rescue()', context);
+  assert.equal(context.surfaced, true);
+  assert.equal(context.inventory.length + context.sealedCards.length, 2);
+  assert.equal(context.pendingLoot, null);
 });
 
 test('le validateur accepte un slot mineral.* et refuse un id inconnu', () => {
