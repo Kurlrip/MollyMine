@@ -1,0 +1,70 @@
+name: Release Play Store
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Construire AAB + APK signes
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      VERSION_CODE: ${{ github.run_number }}
+      ADMOB_APP_ID: ${{ secrets.ADMOB_APP_ID }}
+      ADMOB_REWARD_ID: ${{ secrets.ADMOB_REWARD_ID }}
+      KEYSTORE_FILE: keystore.jks
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Verifier les secrets
+        run: |
+          missing=0
+          for v in ADMOB_APP_ID ADMOB_REWARD_ID KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [ -z "${!v}" ]; then echo "Secret manquant : $v"; missing=1; fi
+          done
+          if [ -z "${{ secrets.KEYSTORE_BASE64 }}" ]; then echo "Secret manquant : KEYSTORE_BASE64"; missing=1; fi
+          exit $missing
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Accepter les licences Android (SDK preinstalle)
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+      - name: Installer les dependances
+        run: npm install --no-audit --no-fund
+      - name: Verifier le jeu
+        run: node --test
+      - name: Preparer le site et synchroniser
+        run: |
+          node scripts/build.mjs
+          rm -rf www && cp -r _site www
+          npx cap add android
+          node scripts/android-manifest.mjs
+          node scripts/build-apk.mjs --release
+          npx cap sync android
+      - name: Restaurer le keystore
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/keystore.jks
+      - name: Versionner et signer
+        run: node scripts/android-release.mjs
+      - name: Construire AAB + APK
+        run: ./android/gradlew -p android bundleRelease assembleRelease
+      - name: Publier les fichiers signes
+        uses: actions/upload-artifact@v4
+        with:
+          name: mollymine-release
+          path: |
+            android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/apk/release/app-release.apk

@@ -22,10 +22,27 @@ Télécharge-le depuis l’onglet Actions du run, installe-le sur ton téléphon
 ## Passer aux vraies pubs (monétisation)
 
 1. Créer un compte **AdMob**, y déclarer l’appli (`com.mollymine.game`).
-2. Créer une unité **récompensée** → copier son ID dans `ADMOB_REWARD_ID`.
-3. Ajouter le secret GitHub `ADMOB_APP_ID` = ID d’application AdMob
-   (sans lui, la CI utilise l’ID de test).
-4. Publier : l’APK release signé est une étape suivante (keystore + Play).
+2. Créer une unité **récompensée** → copier son ID dans le secret GitHub
+   `ADMOB_REWARD_ID`, et l’ID d’application dans `ADMOB_APP_ID`.
+   (Sans ces secrets : IDs de test, annonces factices, zéro revenu.)
+3. Pendant les tests avec de vrais IDs, déclarer le téléphone comme
+   **appareil de test** dans AdMob (clics réels = bannissement sinon).
+
+## Release signée + Play Store
+
+1. Générer le keystore **une fois** (PowerShell, JDK installé) :
+   `keytool -genkeypair -v -keystore mollymine-release.jks -alias mollymine -keyalg RSA -keysize 2048 -validity 10000`
+   **Sauvegarder le fichier + mots de passe** : sans eux, plus aucune mise
+   à jour possible.
+2. Ajouter les secrets GitHub : `KEYSTORE_BASE64` (contenu base64 du `.jks`),
+   `KEY_ALIAS`, `KEYSTORE_PASSWORD`, `KEY_PASSWORD`.
+3. Lancer **Release Play Store** (Actions → Run workflow) : produit
+   `app-release.aab` (à envoyer sur Play) + `app-release.apk`, signés,
+   versionnés (`versionCode` = numéro de run).
+4. Compte développeur Google Play (25 $ uniques) → créer l’appli
+   `com.mollymine.game` → piste de **test interne** d’abord → questionnaires
+   (sécurité des données : voir `PRIVACY.md` comme URL de politique,
+   classification contenu, audience) → production.
 
 ## Bouton retour Android
 

@@ -36,13 +36,13 @@ jobs:
         run: node --test
       - name: Preparer le site et synchroniser
         run: |
-          node scripts/build.mjs
-          rm -rf www && cp -r _site www
+          node scripts/build-apk.mjs
           npx cap add android
           node scripts/android-manifest.mjs
           npx cap sync android
         env:
           ADMOB_APP_ID: ${{ secrets.ADMOB_APP_ID }}
+          ADMOB_REWARD_ID: ${{ secrets.ADMOB_REWARD_ID }}
       - name: Construire l'APK debug
         run: ./android/gradlew -p android assembleDebug
       - name: Publier l'APK
