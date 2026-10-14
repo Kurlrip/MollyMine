@@ -187,6 +187,13 @@ test('le secours anti-softlock demande confirmation puis applique le malus de mo
   assert.equal(context.pendingLoot, null);
 });
 
+test('les helpers bois du jeu sont tous définis', () => {
+  const html = readFileSync('molly_mine.html', 'utf8');
+  for (const name of ['uiSpriteUrl', 'applyUiPack', 'paintWood', 'uiArrow', 'refreshPadArrows']) {
+    assert.ok(html.includes(`function ${name}(`), name);
+  }
+});
+
 test('le validateur accepte un slot mineral.* et refuse un id inconnu', () => {
   const root = mkdtempSync(join(tmpdir(), 'molly-minerals-'));
   const assets = join(root, 'assets');

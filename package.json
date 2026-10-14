@@ -1,6 +1,6 @@
 {
   "name": "mollymine",
-  "version": "12.18.1",
+  "version": "12.18.2",
   "private": true,
   "description": "Molly — Sous la surface (web + APK Capacitor)",
   "scripts": {
