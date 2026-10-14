@@ -32,6 +32,7 @@
 #app .surface-hub button{padding:9px 4px;font-size:11px}
 /* Lisibilité globale : textes et images un cran au-dessus. */
 body{font-size:17px}.panel p{font-size:15px}.item p{font-size:13.5px}.item-title{font-size:15.5px}.item-actions button{font-size:13.5px;padding:11px}.quote-table{font-size:13px}.quote-table th{font-size:11px}.market-row{font-size:14.5px}.tabs button{font-size:13.5px}.notice{font-size:14px}.sub{font-size:12px}.cargo-actions button{font-size:13.5px}.surface-hub button{font-size:14px}.surface-hub small{font-size:10px}.gear-pill{font-size:14px}#scratchQueueInfo{font-size:15px}#scratchProgress{font-size:15px}.stone-name{font-size:13px}.order-needs{font-size:14px}.shop-hero p{font-size:14px}.mineral-chip{width:32px;height:32px}.stone-figure{width:112px}.stone-figure img{width:88px;height:88px}.stone-fallback{font-size:64px;line-height:88px}.hub-card{min-width:38px;height:38px;font-size:19px}.loot-pop{font-size:14px}.loot-pop img{width:30px;height:30px}
+body.has-ui .primary,body.has-ui .secondary,body.has-ui .cargo-actions button,body.has-ui .surface-hub button,body.has-ui .tabs button,body.has-ui .item-actions button,body.has-ui .hand-pick button{background-image:var(--ui-button);background-size:cover;background-color:#5a4632;border-color:#2c2118}body.has-ui .panel{background-image:var(--ui-panel);background-size:cover;background-color:#24383e}body.has-ui .top,body.has-ui .shop-hero{background-image:var(--ui-board);background-size:cover}.pad-arrow{width:62%;height:62%;object-fit:contain;pointer-events:none}
 </style>
 </head>
 <body>
@@ -346,9 +347,13 @@ function poly(c,pts,color,stroke){c.beginPath();c.moveTo(...pts[0]);for(let i=1;
 function gem(c,x,y,s,color){c.save();c.translate(x,y);poly(c,[[0,-s],[-s*.64,-s*.38],[-s*.69,s*.27],[0,s],[s*.69,s*.27],[s*.64,-s*.38]],color,'#112a4066');poly(c,[[0,-s],[-s*.64,-s*.38],[0,-s*.18]],'#ffffff8a');poly(c,[[0,-s*.18],[-s*.69,s*.27],[0,s]],'#05192f42');poly(c,[[0,-s*.18],[s*.64,-s*.38],[s*.69,s*.27],[0,s]],'#ffffff2c');c.strokeStyle='#fff9';c.lineWidth=1.5;c.beginPath();c.moveTo(-s*.3,-s*.35);c.lineTo(0,-s*.75);c.stroke();c.restore()}
 const ASSET_SLOTS=new Set(['molly.idle','molly.atlas','terrain.0','terrain.1','terrain.2','terrain.3','terrain.4','bedrock','rock.0','rock.1','rock.2','rock.3','rock.4','find.stone','gas','monster','warning','stall.shop','stall.market']);
 for(let z=0;z<5;z++){ASSET_SLOTS.add('tunnel.'+z);for(let v=0;v<3;v++)ASSET_SLOTS.add('terrain.'+z+'.'+v);for(let v=0;v<2;v++)ASSET_SLOTS.add('tunnel.'+z+'.'+v)}
-for(const id of Object.keys(MINERALS))ASSET_SLOTS.add('mineral.'+id);
+for(const id of Object.keys(MINERALS))ASSET_SLOTS.add('mineral.'+id);for(const slot of ['ui.button','ui.panel','ui.board','ui.arrow'])ASSET_SLOTS.add(slot);
 const MOLLY_ASSETS={status:'loading',id:'fallback',name:'Dessins intégrés',version:'',sprites:new Map(),errors:[]};
 window.MOLLY_ASSETS=MOLLY_ASSETS;
+function uiSpriteUrl(slot){const e=MOLLY_ASSETS.sprites.get(slot);return MOLLY_ASSETS.status==='ready'&&e&&e.image&&e.image.src?e.image.src:''}
+function applyUiPack(){try{const root=document.documentElement;document.body.classList.toggle('has-ui',!!uiSpriteUrl('ui.button'));for(const entry of [['ui.button','--ui-button'],['ui.panel','--ui-panel'],['ui.board','--ui-board'],['ui.arrow','--ui-arrow']]){const url=uiSpriteUrl(entry[0]);if(url)root.style.setProperty(entry[1],'url("'+url+'")');else root.style.removeProperty(entry[1])}}catch(e){}try{refreshPadArrows()}catch(e){}}
+function uiArrow(dir){const src=uiSpriteUrl('ui.arrow');if(!src)return null;const rot={up:-90,right:180,down:90,left:0}[dir]||0;return '<img class="pad-arrow" alt="" src="'+src+'" style="transform:rotate('+rot+'deg)">'}
+function refreshPadArrows(){for(const b of document.querySelectorAll('.dir')){const img=uiArrow(b.dataset.dir);if(img){if(!b.dataset.glyph)b.dataset.glyph=b.textContent;b.innerHTML=img}else if(b.dataset.glyph)b.textContent=b.dataset.glyph}}
 function assetPackLabel(){return'Assets : '+(MOLLY_ASSETS.status==='ready'?MOLLY_ASSETS.name:MOLLY_ASSETS.status==='error'?'dessins intégrés':'chargement…')}
 function updateAssetPackStatus(){let label=$('assetPackStatus');if(!label&&$('buildVersion')){label=document.createElement('span');label.id='assetPackStatus';$('buildVersion').append(' · ',label)}if(label)label.textContent=assetPackLabel()}
 function packedSprite(slot){return MOLLY_ASSETS.status==='ready'?MOLLY_ASSETS.sprites.get(slot):null}
@@ -383,8 +388,8 @@ async function loadActiveAssetPack(){
    loaded.set(slot,{...definition,image});
   }
   Object.assign(MOLLY_ASSETS,{status:'ready',id:manifest.id,name:manifest.name,version:manifest.version,sprites:loaded,errors});
-  sprites.clear();applyMollyAssetPack();updateAssetPackStatus();
- }catch(error){Object.assign(MOLLY_ASSETS,{status:'error',id:'fallback',name:'Dessins intégrés',version:'',sprites:new Map(),errors:[String(error.message||error)]});updateAssetPackStatus()}
+  sprites.clear();applyMollyAssetPack();applyUiPack();updateAssetPackStatus();
+ }catch(error){Object.assign(MOLLY_ASSETS,{status:'error',id:'fallback',name:'Dessins intégrés',version:'',sprites:new Map(),errors:[String(error.message||error)]});applyUiPack();updateAssetPackStatus()}
 }
 function tileSprite(z,t,variant){/* Le minerai reste secret jusqu’au creusement : même texture que la terre. */if(t===ORE)t=DIRT;const id=z+':'+t+':'+variant;if(sprites.has(id))return sprites.get(id);let cv=document.createElement('canvas');cv.width=cv.height=64;let c=cv.getContext('2d'),zone=ZONES[z];if(drawPackedTile('terrain.'+z,c,0,0,64,64,variant)){sprites.set(id,cv);return cv}c.fillStyle=zone.dark;c.fillRect(0,0,64,64);round(c,2,2,60,60,9,zone.soil);c.fillStyle=zone.light;round(c,7,5,49,5,3,zone.light);c.strokeStyle=zone.dark;c.lineWidth=2;c.beginPath();c.moveTo(8,34+variant*3);c.lineTo(25,30);c.lineTo(38,41);c.lineTo(56,36);c.stroke();for(let i=0;i<6;i++){let x=8+(i*17+variant*9)%48,y=14+(i*13+variant*7)%40;ellipse(c,x,y,2+(i%2),1.7,zone.dark)}if(z===1){c.fillStyle='#91b876';round(c,5,4,18+variant*4,5,3,'#91b876')}if(z===4){c.strokeStyle='#ffad6755';c.beginPath();c.moveTo(8,54);c.lineTo(23,44);c.lineTo(30,51);c.stroke()}sprites.set(id,cv);return cv}
 // Avant le premier coup, le minerai garde la texture de terre. Ensuite, seule une pierre générique se dévoile.

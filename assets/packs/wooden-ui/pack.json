@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-wooden-ui",
+  "name": "Molly Wooden UI",
+  "version": "1.0.0",
+  "license": {
+    "name": "Wooden UI Kit",
+    "source": "Humble Bundle (pack acheté)",
+    "commercialUse": true
+  },
+  "sprites": {
+    "ui.button": { "src": "frame_s_01.png" },
+    "ui.panel": { "src": "frame.png" },
+    "ui.board": { "src": "board.png" },
+    "ui.arrow": { "src": "arrow_left.png" }
+  }
+}

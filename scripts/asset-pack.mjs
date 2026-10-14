@@ -23,6 +23,10 @@ export const MINERAL_IDS = [
 ];
 for (const id of MINERAL_IDS) ASSET_SLOTS.add(`mineral.${id}`);
 
+// Habillage d'interface : boutons, panneaux, fonds et flèches du pavé.
+// Le jeu les applique via variables CSS, avec repli sur les styles intégrés.
+for (const slot of ['ui.button', 'ui.panel', 'ui.board', 'ui.arrow']) ASSET_SLOTS.add(slot);
+
 function readJson(path) {
   try { return JSON.parse(readFileSync(path, 'utf8')); }
   catch (error) { throw new Error(`${path}: JSON invalide (${error.message})`); }

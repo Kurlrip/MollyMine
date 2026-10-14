@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "license": {
     "name": "Illustrations originales générées pour MollyMine",
-    "source": "Codex image_gen, 2026-10-09 ; prompts.json ; surface : molly-surface ; pierre cachée : molly-default ; minerais Gemini 2026-10-11 (molly-minerals) ; étals Gemini 2026-10-11 (molly-stalls)",
+    "source": "Codex image_gen, 2026-10-09 ; prompts.json ; surface : molly-surface ; pierre cachée : molly-default ; minerais Gemini 2026-10-11 (molly-minerals) ; étals Gemini 2026-10-11 (molly-stalls) ; interface bois Humble Bundle 2026-10-12 (molly-wooden-ui)",
     "commercialUse": true
   },
   "sprites": {
@@ -545,6 +545,18 @@
     },
     "stall.market": {
       "src": "../stalls/stall-market.png"
+    },
+    "ui.button": {
+      "src": "../wooden-ui/frame_s_01.png"
+    },
+    "ui.panel": {
+      "src": "../wooden-ui/frame.png"
+    },
+    "ui.board": {
+      "src": "../wooden-ui/board.png"
+    },
+    "ui.arrow": {
+      "src": "../wooden-ui/arrow_left.png"
     }
   }
 }

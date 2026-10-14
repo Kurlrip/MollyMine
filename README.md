@@ -180,3 +180,5 @@ La V12.15.0 double les niveaux : 96 cases de large, paliers à 100/300/600/1000 
 La V12.16.0 aligne la rareté sur le prix : pierres communes fréquentes, pépites et gemmes rares (ex. or magmatique 12 %, diamant 18 %, météorite 10 %).
 
 La V12.17.0 répare la connexion Google dans l’appli : ouverture dans le navigateur système et retour direct via schéma applicatif (deep link injecté au build).
+
+La V12.18.0 habille l’interface en bois (pack Humble Bundle) : boutons, panneaux, fonds et flèches du pavé via 4 slots ui.*, repli intégré conservé.

@@ -61,6 +61,9 @@ une image indisponible laisse les autres slots du pack utilisables.
 - `gas`, `monster`, `warning`
 - `stall.shop`, `stall.market` : les deux étals de la surface (voir
   `stalls/README.md` et `stalls/prompts.json` pour les générer par IA).
+- `ui.button`, `ui.panel`, `ui.board`, `ui.arrow` : habillage d’interface
+  (boutons, panneaux, fonds, flèches du pavé pivotées par CSS). Appliqués via
+  variables CSS avec repli sur les styles intégrés (voir `wooden-ui/`).
 - `mineral.<id>` : un slot par pierre du jeu (27 au total, voir
   `minerals/README.md` et `minerals/prompts.json`). Le sprite remplace la
   gemme procédurale dans la carte à gratter, sur l’étal, dans le sac, le
