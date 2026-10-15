@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.19.1**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.19.2**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
