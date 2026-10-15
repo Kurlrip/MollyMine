@@ -65,6 +65,8 @@ une image indisponible laisse les autres slots du pack utilisables.
   d’interface (boutons, panneaux, fonds, flèches du pavé pivotées par CSS,
   image de fond de page). Appliqués en styles directs avec repli sur les
   styles intégrés (voir `wooden-ui/`).
+- `sky` : panorama du ciel au-dessus de la surface, étiré sur la zone
+  visible (PNG large conseillé, ex. 1024×320, horizon vers le bas).
 - `mineral.<id>` : un slot par pierre du jeu (27 au total, voir
   `minerals/README.md` et `minerals/prompts.json`). Le sprite remplace la
   gemme procédurale dans la carte à gratter, sur l’étal, dans le sac, le

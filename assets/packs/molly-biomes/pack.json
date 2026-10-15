@@ -559,7 +559,10 @@
       "src": "../wooden-ui/arrow_left.png"
     },
     "ui.background": {
-      "src": "../wooden-ui/bg_01_01.png"
+      "src": "../wooden-ui/Plankshadow.png"
+    },
+    "sky": {
+      "src": "../skies/back.png"
     }
   }
 }

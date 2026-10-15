@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "molly-skies",
+  "name": "Molly Skies",
+  "version": "1.0.0",
+  "license": {
+    "name": "Ciel fourni par l'auteur du jeu",
+    "source": "Image back fournie par l'auteur, convertie en PNG pour le pack",
+    "commercialUse": true
+  },
+  "sprites": {
+    "sky": { "src": "back.png" }
+  }
+}
