@@ -80,7 +80,7 @@ test('les slots mineral.* sont synchronisés entre validateur et jeu, avec repli
   const gameSlots = vm.runInContext('[...ASSET_SLOTS]', context);
   for (const id of MINERAL_IDS) assert.ok(gameSlots.includes(`mineral.${id}`), id);
   assert.ok(gameSlots.includes('find.stone'));
-  for (const slot of ['ui.button', 'ui.panel', 'ui.board', 'ui.arrow']) assert.ok(gameSlots.includes(slot), slot);
+  for (const slot of ['ui.button', 'ui.panel', 'ui.board', 'ui.arrow', 'ui.background']) assert.ok(gameSlots.includes(slot), slot);
 });
 
 test('drawMineral utilise le sprite du pack puis la gemme procédurale', () => {
@@ -143,7 +143,7 @@ test('les trouvailles donnent un fragment direct et parfois une carte jackpot', 
     reducedMotion: true,
     encounter: () => ({ uid: 1, id: 'gold', grams: 100, baseValue: 3800, zone: 1, originX: 5, originY: 9 }),
     seedVein: () => {},
-    mineralChip: () => 'chip', feedPop: () => {},
+    mineralChip: () => 'chip', feedPop: () => {}, T: (k) => k, lang: 'fr',
     mass: (items = context.inventory) => items.reduce((s, i) => s + i.grams, 0),
     toast: () => {}, persist: () => {}, updateHUD: () => {},
     rand: () => 0.05, $: () => null,
@@ -175,7 +175,7 @@ test('le secours anti-softlock demande confirmation puis applique le malus de mo
     depthAt: y => Math.max(0, (y - 5) * 5),
     rand: () => 0, toast: () => {}, persist: () => {}, updateHUD: () => {},
     surfacePosition: () => {}, arriveSurface: () => { context.surfaced = true; },
-    setTimeout: () => 0, clearTimeout: () => {},
+    setTimeout: () => 0, clearTimeout: () => {}, T: (k) => k, lang: 'fr',
   });
   vm.runInContext(code, context);
   vm.runInContext('rescue()', context);

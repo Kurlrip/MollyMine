@@ -1,6 +1,6 @@
 # MollyMine
 
-**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.18.8**.
+**Molly — Sous la surface**, jeu d’exploration minière autonome. Version **12.19.0**.
 
 [Jouer sur GitHub Pages](https://kurlrip.github.io/MollyMine/)
 
@@ -184,3 +184,5 @@ La V12.17.0 répare la connexion Google dans l’appli : ouverture dans le navig
 La V12.18.0 habille l’interface en bois (pack Humble Bundle) : boutons, panneaux, fonds et flèches du pavé via 4 slots ui.*, repli intégré conservé.
 
 La V12.18.1 habille l’interface en bois (pack Humble Bundle) : boutons et panneaux en cadres 9-slices, texte sombre sur bois, repli intégré conservé. Mentions clavier PC retirées de l’affichage.
+
+La V12.19.0 parle français et anglais : dictionnaires FR/EN couvrant interface, pierres, zones et aide, sélecteur sur l’accueil et en pause, choix mémorisé (navigateur anglais = anglais par défaut). Sauvegardes inchangées.
