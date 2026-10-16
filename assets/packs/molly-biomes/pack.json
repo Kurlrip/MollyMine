@@ -171,15 +171,6 @@
         627
       ]
     },
-    "bedrock": {
-      "src": "../molly-surface/surface-tiles-v2.png",
-      "frame": [
-        512,
-        512,
-        512,
-        512
-      ]
-    },
     "find.stone": {
       "src": "../molly-default/rock-atlas.png",
       "frame": [
@@ -559,7 +550,7 @@
       "src": "../wooden-ui/arrow_left.png"
     },
     "ui.background": {
-      "src": "../wooden-ui/Plankshadow.png"
+      "src": "../wooden-ui/board.png"
     },
     "sky": {
       "src": "../skies/back.png"

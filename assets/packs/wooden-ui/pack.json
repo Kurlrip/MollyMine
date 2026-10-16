@@ -22,7 +22,7 @@
       "src": "arrow_left.png"
     },
     "ui.background": {
-      "src": "Plankshadow.png"
+      "src": "board.png"
     }
   }
 }

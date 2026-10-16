@@ -80,7 +80,7 @@ test('les slots mineral.* sont synchronisés entre validateur et jeu, avec repli
   const gameSlots = vm.runInContext('[...ASSET_SLOTS]', context);
   for (const id of MINERAL_IDS) assert.ok(gameSlots.includes(`mineral.${id}`), id);
   assert.ok(gameSlots.includes('find.stone'));
-  for (const slot of ['ui.button', 'ui.panel', 'ui.board', 'ui.arrow', 'ui.background', 'sky']) assert.ok(gameSlots.includes(slot), slot);
+  for (const slot of ['ui.button', 'ui.panel', 'ui.board', 'ui.arrow', 'ui.background', 'ui.coin', 'sky']) assert.ok(gameSlots.includes(slot), slot);
 });
 
 test('drawMineral utilise le sprite du pack puis la gemme procédurale', () => {
